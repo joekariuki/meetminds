@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 import { authClient } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
@@ -52,7 +53,7 @@ export default function Home() {
     return (
       <div className="flex items-center justify-center h-screen flex-col gap-y-6">
         <div className="flex items-center gap-4">
-          <img src="/logo.svg" alt="Image" className="h-16 w-16" />
+          <Image src="/logo.svg" alt="Image" width={64} height={64} />
           <p className="text-5xl font-semibold">MeetMinds</p>
         </div>
         <Loader2 className="animate-spin text-violet-600 h-10 w-10" />
