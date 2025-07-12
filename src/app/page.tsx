@@ -24,7 +24,7 @@ export default function Home() {
         onSuccess: () => {
           window.alert("Success");
         },
-        onError: (error) => {
+        onError: () => {
           window.alert("Something went wrong");
         },
       }
@@ -41,7 +41,7 @@ export default function Home() {
         onSuccess: () => {
           window.alert("Success");
         },
-        onError: (error) => {
+        onError: () => {
           window.alert("Something went wrong");
         },
       }
