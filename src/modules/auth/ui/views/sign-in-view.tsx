@@ -7,6 +7,7 @@ import { Loader2, OctagonAlertIcon } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Image from "next/image";
 
 import { authClient } from "@/lib/auth-client";
 import { Card, CardContent } from "@/components/ui/card";
@@ -157,7 +158,7 @@ export function SignInView() {
             </form>
           </Form>
           <div className="bg-radial from-violet-700 to-violet-900 relative hidden md:flex flex-col gap-y-4 items-center justify-center">
-            <img src="/logo.svg" alt="Image" className="h-[92px] w-[92px]" />
+            <Image src="/logo.svg" alt="Image" width={92} height={92} />
             <p className="text-3xl font-semibold text-white">MeetMinds</p>
           </div>
         </CardContent>
