@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 import { authClient } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Loader } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 export default function Home() {
   const { data: session, isPending } = authClient.useSession();
@@ -50,8 +51,12 @@ export default function Home() {
 
   if (isPending) {
     return (
-      <div className="flex items-center justify-center h-screen">
-        <Loader className="animate-spin" />
+      <div className="flex items-center justify-center h-screen flex-col gap-y-6">
+        <div className="flex items-center gap-4">
+          <Image src="/logo.svg" alt="Image" width={64} height={64} />
+          <p className="text-5xl font-semibold">MeetMinds</p>
+        </div>
+        <Loader2 className="animate-spin text-violet-600 h-10 w-10" />
       </div>
     );
   }
