@@ -74,7 +74,7 @@ export function SignInView() {
                     Sign in to your account
                   </p>
                 </div>
-                <div className="grid gap-4">
+                <div className="grid gap-3">
                   <FormField
                     control={form.control}
                     name="email"
@@ -92,6 +92,8 @@ export function SignInView() {
                       </FormItem>
                     )}
                   />
+                </div>
+                <div className="grid gap-3">
                   <FormField
                     control={form.control}
                     name="password"
