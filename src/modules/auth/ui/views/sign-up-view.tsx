@@ -3,7 +3,7 @@
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Loader2, OctagonAlertIcon } from "lucide-react";
+import { OctagonAlertIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
@@ -13,6 +13,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Alert, AlertTitle } from "@/components/ui/alert";
+import { Loader } from "@/components/ui/loader";
 import {
   Form,
   FormControl,
@@ -193,7 +194,12 @@ export function SignUpView() {
                   className="w-full cursor-pointer"
                 >
                   {pending ? (
-                    <Loader2 className="mr-1 h-4 w-4 animate-spin" />
+                    <Loader
+                      variant="inline"
+                      size="sm"
+                      color="current"
+                      className="mr-1"
+                    />
                   ) : (
                     "Sign up"
                   )}
