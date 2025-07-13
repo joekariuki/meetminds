@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { FaGoogle } from "react-icons/fa";
 
 import { authClient } from "@/lib/auth-client";
 import { Card, CardContent } from "@/components/ui/card";
@@ -220,6 +221,7 @@ export function SignUpView() {
                     className="w-full cursor-pointer"
                     type="button"
                   >
+                    <FaGoogle className="mr-2 h-4 w-4" />
                     Google
                   </Button>
                   {/* TODO: Integrate apple social login after you set up credentials */}
