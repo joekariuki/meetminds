@@ -3,11 +3,11 @@
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Loader2, OctagonAlertIcon } from "lucide-react";
+import { OctagonAlertIcon } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
+import { FaGoogle } from "react-icons/fa";
 
 import { authClient } from "@/lib/auth-client";
 import { Card, CardContent } from "@/components/ui/card";
@@ -22,6 +22,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Loader } from "@/components/ui/loader";
 
 const formSchema = z.object({
   email: z.email(),
@@ -29,7 +30,6 @@ const formSchema = z.object({
 });
 
 export function SignInView() {
-  const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
 
@@ -48,11 +48,31 @@ export function SignInView() {
       {
         email: data.email,
         password: data.password,
+        callbackURL: "/",
       },
       {
         onSuccess: () => {
           setPending(false);
-          router.push("/");
+        },
+        onError: ({ error }) => {
+          setPending(false);
+          setError(error.message);
+        },
+      }
+    );
+  };
+
+  const onSocial = (provider: "google") => {
+    setError(null);
+    setPending(true);
+    authClient.signIn.social(
+      {
+        provider,
+        callbackURL: "/",
+      },
+      {
+        onSuccess: () => {
+          setPending(false);
         },
         onError: ({ error }) => {
           setPending(false);
@@ -119,9 +139,18 @@ export function SignInView() {
                     <AlertTitle>{error}</AlertTitle>
                   </Alert>
                 )}
-                <Button disabled={pending} type="submit" className="w-full">
+                <Button
+                  disabled={pending}
+                  type="submit"
+                  className="w-full cursor-pointer"
+                >
                   {pending ? (
-                    <Loader2 className="mr-1 h-4 w-4 animate-spin" />
+                    <Loader
+                      variant="inline"
+                      size="sm"
+                      color="current"
+                      className="mr-1"
+                    />
                   ) : (
                     "Sign in"
                   )}
@@ -134,10 +163,12 @@ export function SignInView() {
                 <div className="grid grid-cols-1 gap-4">
                   <Button
                     disabled={pending}
+                    onClick={() => onSocial("google")}
                     variant="outline"
-                    className="w-full"
+                    className="w-full cursor-pointer"
                     type="button"
                   >
+                    <FaGoogle className="mr-2 h-4 w-4" />
                     Google
                   </Button>
                   {/* TODO: Integrate apple social login after you set up credentials */}

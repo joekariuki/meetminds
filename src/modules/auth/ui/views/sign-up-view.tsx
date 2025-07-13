@@ -3,17 +3,19 @@
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Loader2, OctagonAlertIcon } from "lucide-react";
+import { OctagonAlertIcon } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { FaGoogle } from "react-icons/fa";
 
 import { authClient } from "@/lib/auth-client";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Alert, AlertTitle } from "@/components/ui/alert";
+import { Loader } from "@/components/ui/loader";
 import {
   Form,
   FormControl,
@@ -60,11 +62,32 @@ export function SignUpView() {
         name: data.name,
         email: data.email,
         password: data.password,
+        callbackURL: "/",
       },
       {
         onSuccess: () => {
           setPending(false);
           router.push("/");
+        },
+        onError: ({ error }) => {
+          setPending(false);
+          setError(error.message);
+        },
+      }
+    );
+  };
+
+  const onSocial = (provider: "google") => {
+    setError(null);
+    setPending(true);
+    authClient.signIn.social(
+      {
+        provider,
+        callbackURL: "/",
+      },
+      {
+        onSuccess: () => {
+          setPending(false);
         },
         onError: ({ error }) => {
           setPending(false);
@@ -169,9 +192,18 @@ export function SignUpView() {
                     <AlertTitle>{error}</AlertTitle>
                   </Alert>
                 )}
-                <Button disabled={pending} type="submit" className="w-full">
+                <Button
+                  disabled={pending}
+                  type="submit"
+                  className="w-full cursor-pointer"
+                >
                   {pending ? (
-                    <Loader2 className="mr-1 h-4 w-4 animate-spin" />
+                    <Loader
+                      variant="inline"
+                      size="sm"
+                      color="current"
+                      className="mr-1"
+                    />
                   ) : (
                     "Sign up"
                   )}
@@ -184,10 +216,12 @@ export function SignUpView() {
                 <div className="grid grid-cols-1 gap-4">
                   <Button
                     disabled={pending}
+                    onClick={() => onSocial("google")}
                     variant="outline"
-                    className="w-full"
+                    className="w-full cursor-pointer"
                     type="button"
                   >
+                    <FaGoogle className="mr-2 h-4 w-4" />
                     Google
                   </Button>
                   {/* TODO: Integrate apple social login after you set up credentials */}
