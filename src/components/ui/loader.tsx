@@ -71,8 +71,16 @@ interface LoaderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'color'
 }
 
 /**
- * A reusable loader component that can be used across multiple pages
- * or as an inline spinner within other components like buttons
+ * Displays a customizable loading spinner, either as a full-page loader with optional branding or as an inline indicator.
+ *
+ * Renders a centered loader with optional logo and app name for the "page" variant, or a standalone spinner for the "inline" variant. Spinner appearance can be adjusted via variant, size, and color props.
+ *
+ * @param variant - Loader style variant ("page" or "inline")
+ * @param size - Spinner size
+ * @param color - Spinner color
+ * @param showBranding - Whether to display branding (only for "page" variant)
+ * @param height - Custom height for the container (only for "page" variant)
+ * @param className - Additional CSS classes for styling
  */
 export function Loader({
   variant,

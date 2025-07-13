@@ -29,6 +29,11 @@ const formSchema = z.object({
   password: z.string().min(1, { message: "Password is required" }),
 });
 
+/**
+ * Renders a sign-in form with email/password and Google social login options.
+ *
+ * Provides form validation, error display, and loading states for user authentication. On successful sign-in, redirects are handled via a callback URL. Displays error messages for failed authentication attempts and includes links to sign up, Terms of Service, and Privacy Policy.
+ */
 export function SignInView() {
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);

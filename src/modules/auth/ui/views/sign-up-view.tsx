@@ -39,6 +39,11 @@ const formSchema = z
     path: ["confirmPassword"],
   });
 
+/**
+ * Renders the user sign-up interface with form validation and social login options.
+ *
+ * Provides a form for users to create an account using their name, email, and password, with validation for required fields and password confirmation. Supports sign-up via email or Google social login. Displays error messages and loading indicators as appropriate. Includes navigation to the sign-in page and links to terms of service and privacy policy.
+ */
 export function SignUpView() {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
