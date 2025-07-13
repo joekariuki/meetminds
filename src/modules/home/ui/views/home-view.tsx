@@ -3,8 +3,10 @@
 import { authClient } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
 import { Loader } from "@/components/ui/loader";
+import { useRouter } from "next/navigation";
 
 export function HomeView() {
+  const router = useRouter();
   const { data: session, isPending } = authClient.useSession();
 
   if (isPending) {
@@ -17,14 +19,18 @@ export function HomeView() {
         <p>Logged in as {session.user.name}</p>
         <Button
           disabled={isPending}
-          onClick={() => authClient.signOut()}
+          onClick={() =>
+            authClient.signOut({
+              fetchOptions: {
+                onSuccess: () => {
+                  router.push("/sign-in");
+                },
+              },
+            })
+          }
           className="cursor-pointer"
         >
-          {isPending ? (
-            <Loader variant="inline" size="sm" color="current" />
-          ) : (
-            "Sign out"
-          )}
+          Sign out
         </Button>
       </div>
     );
