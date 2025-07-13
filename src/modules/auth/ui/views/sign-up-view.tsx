@@ -74,6 +74,26 @@ export function SignUpView() {
     );
   };
 
+  const onSocial = (provider: "google") => {
+    setError(null);
+    setPending(true);
+    authClient.signIn.social(
+      {
+        provider,
+      },
+      {
+        onSuccess: () => {
+          setPending(false);
+          router.push("/");
+        },
+        onError: ({ error }) => {
+          setPending(false);
+          setError(error.message);
+        },
+      }
+    );
+  };
+
   return (
     <div className="flex flex-col gap-6">
       <Card className="overflow-hidden p-0">
@@ -188,9 +208,7 @@ export function SignUpView() {
                 <div className="grid grid-cols-1 gap-4">
                   <Button
                     disabled={pending}
-                    onClick={() =>
-                      authClient.signIn.social({ provider: "google" })
-                    }
+                    onClick={() => onSocial("google")}
                     variant="outline"
                     className="w-full cursor-pointer"
                     type="button"
