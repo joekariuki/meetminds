@@ -119,7 +119,11 @@ export function SignInView() {
                     <AlertTitle>{error}</AlertTitle>
                   </Alert>
                 )}
-                <Button disabled={pending} type="submit" className="w-full">
+                <Button
+                  disabled={pending}
+                  type="submit"
+                  className="w-full cursor-pointer"
+                >
                   {pending ? (
                     <Loader2 className="mr-1 h-4 w-4 animate-spin" />
                   ) : (
@@ -134,8 +138,11 @@ export function SignInView() {
                 <div className="grid grid-cols-1 gap-4">
                   <Button
                     disabled={pending}
+                    onClick={() =>
+                      authClient.signIn.social({ provider: "google" })
+                    }
                     variant="outline"
-                    className="w-full"
+                    className="w-full cursor-pointer"
                     type="button"
                   >
                     Google
