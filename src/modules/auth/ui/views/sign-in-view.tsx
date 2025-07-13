@@ -21,6 +21,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Loader } from "@/components/ui/loader";
 
 const formSchema = z.object({
   email: z.email(),
@@ -143,7 +144,12 @@ export function SignInView() {
                   className="w-full cursor-pointer"
                 >
                   {pending ? (
-                    <Loader2 className="mr-1 h-4 w-4 animate-spin" />
+                    <Loader
+                      variant="inline"
+                      size="sm"
+                      color="current"
+                      className="mr-1"
+                    />
                   ) : (
                     "Sign in"
                   )}
