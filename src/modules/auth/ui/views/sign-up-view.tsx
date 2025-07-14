@@ -15,7 +15,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Alert, AlertTitle } from "@/components/ui/alert";
-import { Loader } from "@/components/ui/loader";
+import { Loader } from "@/components/loader";
 import {
   Form,
   FormControl,
@@ -241,7 +241,7 @@ export function SignUpView() {
               </div>
             </form>
           </Form>
-          <div className="bg-radial from-violet-700 to-violet-900 relative hidden md:flex flex-col gap-y-4 items-center justify-center">
+          <div className="bg-radial from-sidebar-accent to-sidebar relative hidden md:flex flex-col gap-y-4 items-center justify-center">
             <Image src="/logo.svg" alt="Image" width={92} height={92} />
             <p className="text-3xl font-semibold text-white">MeetMinds</p>
           </div>
