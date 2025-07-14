@@ -22,7 +22,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Loader } from "@/components/ui/loader";
+import { Loader } from "@/components/loader";
 
 const formSchema = z.object({
   email: z.email(),
