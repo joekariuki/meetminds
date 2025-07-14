@@ -61,14 +61,16 @@ export function DashboardNavbar() {
         >
           <SearchIcon className="size-4" />
           Search
-          <kbd className="ml-auto pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 text-[10px] font-mono font-medium text-muted-foreground">
-            {isMacOS() ? (
-              <span className="text-xs">&#8984;</span>
-            ) : (
-              <span className="text-xs">Ctrl</span>
-            )}
-            <span className="text-xs">+ K</span>
-          </kbd>
+          {!isMobile && (
+            <kbd className="ml-auto pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 text-[10px] font-mono font-medium text-muted-foreground">
+              {isMacOS() ? (
+                <span className="text-xs">&#8984;</span>
+              ) : (
+                <span className="text-xs">Ctrl</span>
+              )}
+              <span className="text-xs">+ K</span>
+            </kbd>
+          )}
         </Button>
       </nav>
     </>
