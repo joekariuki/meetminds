@@ -28,6 +28,7 @@ export function GeneratedAvatar({
         seed,
         fontWeight: 500,
         fontSize: 42,
+        backgroundColor: ["5b21b6"],
       });
       break;
     case "glass":
