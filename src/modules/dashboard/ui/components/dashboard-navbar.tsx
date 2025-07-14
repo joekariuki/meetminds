@@ -17,8 +17,7 @@ export function DashboardNavbar() {
     if (typeof navigator === "undefined") return false;
 
     // Check for OS version using navigator userAgent
-    const nav = navigator;
-    if (nav.userAgent && nav.userAgent.includes("Mac OS")) {
+    if (navigator.userAgent?.includes("Mac OS")) {
       return true;
     }
 
