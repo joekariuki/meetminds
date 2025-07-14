@@ -16,8 +16,8 @@ export function DashboardNavbar() {
   const isMacOS = () => {
     if (typeof navigator === "undefined") return false;
 
-    // Check for userAgentData (modern API) with type safety
-    const nav = navigator as any;
+    // Check for OS version using navigator userAgent
+    const nav = navigator;
     if (nav.userAgent && nav.userAgent.includes("Mac OS")) {
       return true;
     }
