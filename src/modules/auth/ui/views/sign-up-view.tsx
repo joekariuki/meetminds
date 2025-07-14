@@ -15,7 +15,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Alert, AlertTitle } from "@/components/ui/alert";
-import { Loader } from "@/components/ui/loader";
+import { Loader } from "@/components/loader";
 import {
   Form,
   FormControl,
