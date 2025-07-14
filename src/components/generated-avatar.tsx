@@ -35,6 +35,12 @@ export function GeneratedAvatar({
       avatar = createAvatar(glass, {
         seed,
       });
+
+      break;
+    default:
+      avatar = createAvatar(botttsNeutral, {
+        seed,
+      });
       break;
   }
 
