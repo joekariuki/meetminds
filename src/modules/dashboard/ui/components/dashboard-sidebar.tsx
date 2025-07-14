@@ -1,9 +1,14 @@
+"use client";
+
 import React from "react";
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { BotIcon, StarIcon, VideoIcon } from "lucide-react";
+
+import { cn } from "@/lib/utils";
 
 import {
   Sidebar,
@@ -16,7 +21,8 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
 } from "@/components/ui/sidebar";
-import { Separator } from "@radix-ui/react-context-menu";
+import { Separator } from "@/components/ui/separator";
+import { DashboardUserButton } from "./dashboard-user-button";
 
 const firstSection = [
   {
@@ -40,6 +46,8 @@ const secondSection = [
 ];
 
 function DashboardSidebar() {
+  const pathname = usePathname();
+
   return (
     <div>
       <Sidebar>
@@ -62,10 +70,51 @@ function DashboardSidebar() {
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupContent>
+              {/* TODO: Update the hover and active style of the dashboard sidebar menu items to be uniform */}
               <SidebarMenu>
                 {firstSection.map((item) => (
                   <SidebarMenuItem key={item.href}>
-                    <SidebarMenuButton asChild>
+                    <SidebarMenuButton
+                      asChild
+                      className={cn(
+                        "h-10 hover:bg-linear-to-r/oklch border border-transparent hover:border-[#5D6B68]/10 from-sidebar-accent from-5% via-30% via-sidebar/50 to-sidebar/50",
+                        pathname === item.href &&
+                          "bg-linear-to-r/oklch border[#5D6B68]/10"
+                      )}
+                      isActive={pathname === item.href}
+                    >
+                      <Link href={item.href}>
+                        <item.icon className="h-5 w-5" />
+                        <span className="text-sm font-medium tracking-tight">
+                          {item.label}
+                        </span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+
+          <div className="px-4 py-2">
+            <Separator className="opacity-10 text-[#5D6B68]" />
+          </div>
+
+          <SidebarGroup>
+            <SidebarGroupContent>
+              {/* TODO: Update the hover and active style of the dashboard sidebar menu items to be uniform */}
+              <SidebarMenu>
+                {secondSection.map((item) => (
+                  <SidebarMenuItem key={item.href}>
+                    <SidebarMenuButton
+                      asChild
+                      className={cn(
+                        "h-10 hover:bg-linear-to-r/oklch border border-transparent hover:border-[#5D6B68]/10 from-sidebar-accent from-5% via-30% via-sidebar/50 to-sidebar/50",
+                        pathname === item.href &&
+                          "bg-linear-to-r/oklch border[#5D6B68]/10"
+                      )}
+                      isActive={pathname === item.href}
+                    >
                       <Link href={item.href}>
                         <item.icon className="h-5 w-5" />
                         <span className="text-sm font-medium tracking-tight">
@@ -79,6 +128,9 @@ function DashboardSidebar() {
             </SidebarGroupContent>
           </SidebarGroup>
         </SidebarContent>
+        <SidebarFooter className="text-white">
+          <DashboardUserButton />
+        </SidebarFooter>
       </Sidebar>
     </div>
   );
