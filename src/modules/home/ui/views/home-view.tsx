@@ -2,7 +2,7 @@
 
 import { authClient } from "@/lib/auth-client";
 import { Button } from "@/components/ui/button";
-import { Loader } from "@/components/ui/loader";
+import { Loader } from "@/components/loader";
 import { useRouter } from "next/navigation";
 
 export function HomeView() {
