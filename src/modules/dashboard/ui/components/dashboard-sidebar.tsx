@@ -1,0 +1,86 @@
+import React from "react";
+
+import Image from "next/image";
+import Link from "next/link";
+
+import { BotIcon, StarIcon, VideoIcon } from "lucide-react";
+
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
+} from "@/components/ui/sidebar";
+import { Separator } from "@radix-ui/react-context-menu";
+
+const firstSection = [
+  {
+    icon: VideoIcon,
+    label: "Meetings",
+    href: "/meetings",
+  },
+  {
+    icon: BotIcon,
+    label: "Agents",
+    href: "/agents",
+  },
+];
+
+const secondSection = [
+  {
+    icon: StarIcon,
+    label: "Upgrade",
+    href: "/upgrade",
+  },
+];
+
+function DashboardSidebar() {
+  return (
+    <div>
+      <Sidebar>
+        <SidebarHeader className="text-sidebar-accent-foreground">
+          <Link href="/" className="flex items-center gap-2 pt-2">
+            <Image
+              src="/logo.svg"
+              alt="MeetMinds Logo"
+              width={36}
+              height={36}
+            />
+            <span className="text-2xl font-semibold">MeetMinds</span>
+          </Link>
+        </SidebarHeader>
+
+        <div className="px-4 py-2">
+          <Separator className="opacity-10 text-[#5D6B68]" />
+        </div>
+
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {firstSection.map((item) => (
+                  <SidebarMenuItem key={item.href}>
+                    <SidebarMenuButton asChild>
+                      <Link href={item.href}>
+                        <item.icon className="h-5 w-5" />
+                        <span className="text-sm font-medium tracking-tight">
+                          {item.label}
+                        </span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </SidebarContent>
+      </Sidebar>
+    </div>
+  );
+}
+export default DashboardSidebar;
