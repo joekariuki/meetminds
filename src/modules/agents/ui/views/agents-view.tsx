@@ -10,7 +10,12 @@ export function AgentsView() {
   const { data, isLoading } = useQuery(trpc.agents.getMany.queryOptions());
 
   if (isLoading) {
-    return <Loader size="default" variant="page" />;
+    return (
+      <Loader
+        title="Loading Agents"
+        description="This may take a few seconds..."
+      />
+    );
   }
 
   return <div>{JSON.stringify(data, null, 2)}</div>;
