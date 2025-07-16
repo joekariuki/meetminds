@@ -45,11 +45,7 @@ export function DashboardNavbar() {
     <>
       <DashboardCommand open={commandOpen} setOpen={setCommandOpen} />
       <nav className="flex px-4 gap-x-4 py-3 border-b bg-background">
-        <Button
-          className="size-9 cursor-pointer"
-          variant="outline"
-          onClick={toggleSidebar}
-        >
+        <Button className="size-9" variant="outline" onClick={toggleSidebar}>
           {state === "collapsed" || isMobile ? (
             <PanelLeftIcon className="size-4" />
           ) : (

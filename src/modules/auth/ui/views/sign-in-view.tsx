@@ -139,11 +139,7 @@ export function SignInView() {
                     <AlertTitle>{error}</AlertTitle>
                   </Alert>
                 )}
-                <Button
-                  disabled={pending}
-                  type="submit"
-                  className="w-full cursor-pointer"
-                >
+                <Button disabled={pending} type="submit" className="w-full">
                   {pending ? (
                     <Loader
                       variant="inline"
@@ -165,7 +161,7 @@ export function SignInView() {
                     disabled={pending}
                     onClick={() => onSocial("google")}
                     variant="outline"
-                    className="w-full cursor-pointer"
+                    className="w-full"
                     type="button"
                   >
                     <FaGoogle className="mr-2 h-4 w-4" />
