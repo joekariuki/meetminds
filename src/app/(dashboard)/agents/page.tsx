@@ -1,6 +1,21 @@
-import { AgentsView } from "@/modules/agents/ui/views/agents-view";
-import React from "react";
+import { Suspense } from "react";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
-export default function AgentsPage() {
-  return <AgentsView />;
+import { getQueryClient, trpc } from "@/trpc/server";
+
+import {
+  AgentsView,
+  AgentsViewLoading,
+} from "@/modules/agents/ui/views/agents-view";
+
+export default async function AgentsPage() {
+  const queryClient = getQueryClient();
+  void queryClient.prefetchQuery(trpc.agents.getMany.queryOptions());
+  return (
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <Suspense fallback={<AgentsViewLoading />}>
+        <AgentsView />
+      </Suspense>
+    </HydrationBoundary>
+  );
 }
