@@ -64,7 +64,7 @@ export function DashboardUserButton() {
           ) : (
             <GeneratedAvatar
               seed={data.user.name}
-              style="initials"
+              variant="initials"
               className="size-9"
             />
           )}
@@ -104,7 +104,7 @@ export function DashboardUserButton() {
         ) : (
           <GeneratedAvatar
             seed={data.user.name}
-            style="initials"
+            variant="initials"
             className="size-9"
           />
         )}
