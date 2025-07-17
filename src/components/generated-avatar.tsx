@@ -1,23 +1,38 @@
 import { createAvatar } from "@dicebear/core";
-import { botttsNeutral, initials, glass } from "@dicebear/collection";
+import {
+  botttsNeutral,
+  initials,
+  glass,
+  lorelei,
+  notionists,
+  openPeeps,
+} from "@dicebear/collection";
 
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
+export type AvatarVariant =
+  | "botttsNeutral"
+  | "initials"
+  | "glass"
+  | "lorelei"
+  | "notionists"
+  | "openPeeps";
+
 interface GeneratedAvatarProps {
   seed: string;
   className?: string;
-  style?: "botttsNeutral" | "initials" | "glass";
+  variant?: AvatarVariant;
 }
 
 export function GeneratedAvatar({
   seed,
   className,
-  style = "botttsNeutral",
+  variant = "notionists",
 }: GeneratedAvatarProps) {
   let avatar;
 
-  switch (style) {
+  switch (variant) {
     case "botttsNeutral":
       avatar = createAvatar(botttsNeutral, {
         seed,
@@ -37,8 +52,23 @@ export function GeneratedAvatar({
       });
 
       break;
+    case "lorelei":
+      avatar = createAvatar(lorelei, {
+        seed,
+      });
+      break;
+    case "notionists":
+      avatar = createAvatar(notionists, {
+        seed,
+      });
+      break;
+    case "openPeeps":
+      avatar = createAvatar(openPeeps, {
+        seed,
+      });
+      break;
     default:
-      avatar = createAvatar(botttsNeutral, {
+      avatar = createAvatar(notionists, {
         seed,
       });
       break;
