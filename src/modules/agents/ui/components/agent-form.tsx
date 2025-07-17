@@ -87,6 +87,7 @@ export function AgentForm({
   const onSubmit = (values: FormData) => {
     if (isEdit) {
       //   updateAgent.mutate(values);
+      // TODO: Add updateAgent mutation
       console.log("TODO: updateAgent");
     } else {
       createAgent.mutate(values);
@@ -95,7 +96,7 @@ export function AgentForm({
 
   return (
     <Form {...form}>
-      <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit as any)}>
+      <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
         <div className="flex items-center gap-4">
           <GeneratedAvatar
             seed={form.watch("name")}
