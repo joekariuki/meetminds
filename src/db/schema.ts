@@ -68,7 +68,7 @@ export const agents = pgTable("agents", {
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),
   instructions: text("instructions").notNull(),
-  avatarType: text("avatar_type").notNull().default("notionists"),
+  avatarType: text("avatar_type").notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
