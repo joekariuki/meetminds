@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 
 import { useAgentsFilters } from "../../hooks/use-agents-filters";
 
-export function SearchFilter() {
+export function AgentsSearchFilter() {
   const [filters, setFilters] = useAgentsFilters();
   return (
     <div className="relative">
