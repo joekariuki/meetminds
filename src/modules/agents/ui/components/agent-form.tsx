@@ -50,7 +50,9 @@ export function AgentForm({
     trpc.agents.create.mutationOptions({
       onSuccess: async () => {
         // Invalidate the getMany query to show new created agent
-        await queryClient.invalidateQueries(trpc.agents.getMany.queryOptions());
+        await queryClient.invalidateQueries(
+          trpc.agents.getMany.queryOptions({})
+        );
 
         // If we are editing an existing agent, invalidate the getOne query
         if (initialValues?.id) {
@@ -59,6 +61,13 @@ export function AgentForm({
               id: initialValues.id,
             })
           );
+        } else {
+          // Reset the form only when creating a new agent
+          form.reset({
+            name: "",
+            instructions: "",
+            avatarType: "notionists",
+          });
         }
         onSuccess?.();
       },

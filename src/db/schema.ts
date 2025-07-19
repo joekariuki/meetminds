@@ -62,7 +62,9 @@ export const verification = pgTable("verification", {
 });
 
 export const agents = pgTable("agents", {
-  id: text("id").primaryKey().default(nanoid()),
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => nanoid()),
   name: text("name").notNull(),
   userId: text("user_id")
     .notNull()
@@ -70,5 +72,8 @@ export const agents = pgTable("agents", {
   instructions: text("instructions").notNull(),
   avatarType: text("avatar_type").notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
-  updatedAt: timestamp("updated_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at")
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
 });
