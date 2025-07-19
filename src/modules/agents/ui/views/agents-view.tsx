@@ -9,10 +9,16 @@ import { EmptyState } from "@/components/empty-state";
 
 import { DataTable } from "../components/data-table";
 import { columns } from "../components/columns";
+import { useAgentsFilters } from "../../hooks/use-agents-filters";
 
 export function AgentsView() {
+  const [filters, setFilters] = useAgentsFilters();
   const trpc = useTRPC();
-  const { data } = useSuspenseQuery(trpc.agents.getMany.queryOptions({}));
+  const { data } = useSuspenseQuery(
+    trpc.agents.getMany.queryOptions({
+      ...filters,
+    })
+  );
 
   return (
     <div className="flex-1 pb-4 px-4 md:px-8 flex flex-col gap-y-4">
