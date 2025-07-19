@@ -1,5 +1,7 @@
 "use client";
 
+import { ErrorState } from "@/components/error-state";
+import { Loader } from "@/components/loader";
 import { useTRPC } from "@/trpc/client";
 import { useSuspenseQuery } from "@tanstack/react-query";
 
@@ -23,9 +25,19 @@ export function AgentDetailView({ agentId }: Props) {
 }
 
 export function AgentDetailLoading() {
-  return <div>Loading...</div>;
+  return (
+    <Loader
+      title="Loading Agent"
+      description="This may take a few seconds..."
+    />
+  );
 }
 
 export function AgentDetailError() {
-  return <div>Error</div>;
+  return (
+    <ErrorState
+      title="Error Loading Agent"
+      description="Something went wrong"
+    />
+  );
 }
