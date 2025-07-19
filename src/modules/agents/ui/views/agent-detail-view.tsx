@@ -4,6 +4,7 @@ import { ErrorState } from "@/components/error-state";
 import { Loader } from "@/components/loader";
 import { useTRPC } from "@/trpc/client";
 import { useSuspenseQuery } from "@tanstack/react-query";
+import { AgentDetailHeader } from "../components/agent-detail-header";
 
 interface Props {
   agentId: string;
@@ -19,7 +20,12 @@ export function AgentDetailView({ agentId }: Props) {
 
   return (
     <div className="flex-1 py-4 px-4 md:px-8 flex flex-col gap-y-4">
-      AgentDetailView {JSON.stringify(data, null, 2)}
+      <AgentDetailHeader
+        agentId={agentId}
+        agentName={data.name}
+        onEdit={() => {}}
+        onDelete={() => {}}
+      />
     </div>
   );
 }
