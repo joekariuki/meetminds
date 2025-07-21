@@ -67,11 +67,11 @@ export function AgentDetailHeader({
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuItem onClick={onEdit}>
+          <DropdownMenuItem onClick={onEdit} className="cursor-pointer">
             <PencilIcon className="size-4 text-black" />
             Edit
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={onDelete}>
+          <DropdownMenuItem onClick={onDelete} className="cursor-pointer">
             <TrashIcon className="size-4 text-black" />
             Delete
           </DropdownMenuItem>
