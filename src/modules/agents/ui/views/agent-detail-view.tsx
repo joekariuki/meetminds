@@ -1,7 +1,13 @@
 "use client";
 
-import { useSuspenseQuery } from "@tanstack/react-query";
+import {
+  useMutation,
+  useQueryClient,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import { VideoIcon } from "lucide-react";
+import { toast } from "sonner";
 
 import { useTRPC } from "@/trpc/client";
 
@@ -17,10 +23,29 @@ interface Props {
 }
 
 export function AgentDetailView({ agentId }: Props) {
+  const router = useRouter();
+  const queryClient = useQueryClient();
+
   const trpc = useTRPC();
+
   const { data } = useSuspenseQuery(
     trpc.agents.getOne.queryOptions({
       id: agentId,
+    })
+  );
+
+  const deleteAgent = useMutation(
+    trpc.agents.delete.mutationOptions({
+      onSuccess: async () => {
+        await queryClient.invalidateQueries(
+          trpc.agents.getMany.queryOptions({})
+        );
+        // TODO: Invalidate free tier usage
+        router.push("/agents");
+      },
+      onError: (error) => {
+        toast.error(error.message);
+      },
     })
   );
 
@@ -30,7 +55,7 @@ export function AgentDetailView({ agentId }: Props) {
         agentId={agentId}
         agentName={data.name}
         onEdit={() => {}}
-        onDelete={() => {}}
+        onDelete={() => deleteAgent.mutate({ id: agentId })}
       />
       <div className="bg-white rounded-lg border">
         <div className="px-4 py-5 gap-y-5 flex flex-col col-span-5">
