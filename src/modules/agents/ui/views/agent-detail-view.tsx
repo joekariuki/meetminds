@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   useMutation,
   useQueryClient,
@@ -17,16 +18,18 @@ import { Badge } from "@/components/ui/badge";
 import { AvatarVariant, GeneratedAvatar } from "@/components/generated-avatar";
 
 import { AgentDetailHeader } from "../components/agent-detail-header";
+import { UpdateAgentDialog } from "../components/update-agent-dialog";
 
 interface Props {
   agentId: string;
 }
 
 export function AgentDetailView({ agentId }: Props) {
+  const trpc = useTRPC();
   const router = useRouter();
   const queryClient = useQueryClient();
 
-  const trpc = useTRPC();
+  const [updateAgentDialogOpen, setUpdateAgentDialogOpen] = useState(false);
 
   const { data } = useSuspenseQuery(
     trpc.agents.getOne.queryOptions({
@@ -65,11 +68,16 @@ export function AgentDetailView({ agentId }: Props) {
   return (
     <>
       <DeleteConfirmation />
+      <UpdateAgentDialog
+        open={updateAgentDialogOpen}
+        onOpenChange={setUpdateAgentDialogOpen}
+        initialValues={data}
+      />
       <div className="flex-1 py-4 px-4 md:px-8 flex flex-col gap-y-4">
         <AgentDetailHeader
           agentId={agentId}
           agentName={data.name}
-          onEdit={() => {}}
+          onEdit={() => setUpdateAgentDialogOpen(true)}
           onDelete={handleDeleteAgent}
         />
         <div className="bg-white rounded-lg border">
