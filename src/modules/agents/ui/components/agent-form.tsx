@@ -54,6 +54,26 @@ export function AgentForm({
           trpc.agents.getMany.queryOptions({})
         );
 
+        // TODO: Invalidate free tier usage
+
+        onSuccess?.();
+      },
+      onError: (error) => {
+        toast.error(error.message);
+
+        // TODO: Check if error code is "FORBIDDEN", redirect to /"upgrade"
+      },
+    })
+  );
+
+  const updateAgent = useMutation(
+    trpc.agents.update.mutationOptions({
+      onSuccess: async () => {
+        // Invalidate the getMany query to show new created agent
+        await queryClient.invalidateQueries(
+          trpc.agents.getMany.queryOptions({})
+        );
+
         // If we are editing an existing agent, invalidate the getOne query
         if (initialValues?.id) {
           await queryClient.invalidateQueries(
@@ -61,13 +81,6 @@ export function AgentForm({
               id: initialValues.id,
             })
           );
-        } else {
-          // Reset the form only when creating a new agent
-          form.reset({
-            name: "",
-            instructions: "",
-            avatarType: "notionists",
-          });
         }
         onSuccess?.();
       },
@@ -91,13 +104,11 @@ export function AgentForm({
   });
 
   const isEdit = !!initialValues?.id;
-  const isPending = createAgent.isPending;
+  const isPending = createAgent.isPending || updateAgent.isPending;
 
   const onSubmit = (values: FormData) => {
     if (isEdit) {
-      //   updateAgent.mutate(values);
-      // TODO: Add updateAgent mutation
-      console.log("TODO: updateAgent");
+      updateAgent.mutate({ ...values, id: initialValues.id });
     } else {
       createAgent.mutate(values);
     }
