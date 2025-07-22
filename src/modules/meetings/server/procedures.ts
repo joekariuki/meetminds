@@ -12,7 +12,26 @@ import {
   MIN_PAGE_SIZE,
 } from "@/constants";
 
+import { meetingsInsertSchema } from "../schemas";
+
 export const meetingsRouter = createTRPCRouter({
+  // Create meeting
+  create: protectedProcedure
+    .input(meetingsInsertSchema)
+    .mutation(async ({ input, ctx }) => {
+      const [createdMeeting] = await db
+        .insert(meetings)
+        .values({
+          ...input,
+          userId: ctx.auth.user.id,
+        })
+        .returning();
+
+      // TODO: Create Stream Call, Upsert Stream User
+
+      return createdMeeting;
+    }),
+
   // Get one meeting
   getOne: protectedProcedure
     .input(z.object({ id: z.string() }))
