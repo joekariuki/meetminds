@@ -12,7 +12,7 @@ import {
   MIN_PAGE_SIZE,
 } from "@/constants";
 
-import { meetingsInsertSchema } from "../schemas";
+import { meetingsInsertSchema, meetingsUpdateSchema } from "../schemas";
 
 export const meetingsRouter = createTRPCRouter({
   // Create meeting
@@ -107,5 +107,27 @@ export const meetingsRouter = createTRPCRouter({
         total: total.count,
         totalPages,
       };
+    }),
+
+  // Update meeting
+  update: protectedProcedure
+    .input(meetingsUpdateSchema)
+    .mutation(async ({ ctx, input }) => {
+      const [updatedMeeting] = await db
+        .update(meetings)
+        .set(input)
+        .where(
+          and(eq(meetings.id, input.id), eq(meetings.userId, ctx.auth.user.id))
+        )
+        .returning();
+
+      if (!updatedMeeting) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Meeting not found",
+        });
+      }
+
+      return updatedMeeting;
     }),
 });
