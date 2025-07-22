@@ -86,7 +86,7 @@ export const meetingStatus = pgEnum("meeting_status", [
   "cancelled",
 ]);
 
-export const meetings = pgTable("meeting", {
+export const meetings = pgTable("meetings", {
   id: text("id")
     .primaryKey()
     .$defaultFn(() => nanoid()),
