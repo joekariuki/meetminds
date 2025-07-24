@@ -16,13 +16,14 @@ export function MeetingsView() {
 
   return (
     <div className="flex-1 flex-col pb-4 px-4 md:px-8 ">
-      <DataTable data={data.items} columns={columns} />
-      {data.items.length === 0 && (
+      {data.items.length === 0 ? (
         <EmptyState
           title="Create your first meeting"
           description="Schedule a meeting to connect with others. 
           Each meeting lets you collaborate, share ideas, and interact with participants in real time."
         />
+      ) : (
+        <DataTable data={data.items} columns={columns} />
       )}
     </div>
   );
