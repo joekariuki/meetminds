@@ -197,8 +197,13 @@ export function AgentForm({
             </Button>
           )}
           <Button type="submit" disabled={isPending}>
-            {isPending && <Loader variant="inline" color="secondary" />}
-            {isEdit ? "Update" : "Create"}
+            {isPending ? (
+              <div className="px-2">
+                <Loader variant="inline" color="secondary" />
+              </div>
+            ) : (
+              <>{isEdit ? "Update" : "Create"}</>
+            )}
           </Button>
         </div>
       </form>
