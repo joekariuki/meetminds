@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 
 interface Props {
   size?: "sm" | "md" | "lg";
-  color?: "default" | "muted" | "primary";
+  color?: "default" | "muted" | "primary" | "secondary";
   className?: string;
 }
 
@@ -16,6 +16,7 @@ const colorClasses = {
   default: "bg-foreground",
   muted: "bg-muted-foreground",
   primary: "bg-primary",
+  secondary: "bg-secondary",
 };
 
 export function LoadingDots({
