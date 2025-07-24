@@ -42,7 +42,7 @@ export function MeetingForm({
   const trpc = useTRPC();
   const queryClient = useQueryClient();
 
-  const [openNewAgenDialog, setOpenNewAgentDialog] = useState(false);
+  const [openNewAgentDialog, setOpenNewAgentDialog] = useState(false);
   const [agentSearch, setAgentSearch] = useState("");
 
   const agents = useQuery(
@@ -122,7 +122,7 @@ export function MeetingForm({
   return (
     <>
       <NewAgentDialog
-        open={openNewAgenDialog}
+        open={openNewAgentDialog}
         onOpenChange={setOpenNewAgentDialog}
       />
       <Form {...form}>
