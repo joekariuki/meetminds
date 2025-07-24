@@ -114,7 +114,7 @@ export function MeetingForm({
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input placeholder="e.g. Wellness session" {...field} />
+                <Input placeholder="e.g. Coaching Session" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
