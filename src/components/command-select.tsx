@@ -25,7 +25,6 @@ interface Props {
   onSearch?: (value: string) => void;
   value: string;
   placeholder?: string;
-  isSearchable?: boolean;
   isLoading?: boolean;
   className?: string;
 }
@@ -36,7 +35,6 @@ export function CommandSelect({
   onSearch,
   value,
   placeholder = "Select an option",
-  isSearchable,
   isLoading = false,
   className,
 }: Props) {
