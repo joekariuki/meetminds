@@ -27,7 +27,7 @@ export function MeetingsView() {
   );
 
   return (
-    <div className="flex-1 flex-col pb-4 px-4 md:px-8 gap-y-4">
+    <div className="flex flex-col flex-1 pb-4 px-4 md:px-8 gap-y-4">
       <DataTable
         data={data.items}
         columns={columns}
