@@ -14,7 +14,7 @@ export function AgentIdFilter() {
 
   const [agentSearch, setAgentSearch] = useState("");
 
-  const { data } = useQuery(
+  const { data, isLoading } = useQuery(
     trpc.agents.getMany.queryOptions({
       pageSize: 100,
       search: agentSearch,
@@ -42,6 +42,7 @@ export function AgentIdFilter() {
       onSelect={(value) => setFilters({ agentId: value })}
       onSearch={setAgentSearch}
       value={filters.agentId ?? ""}
+      isLoading={isLoading}
     />
   );
 }
