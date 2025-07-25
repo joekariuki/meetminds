@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { NewMeetingDialog } from "./new-meeting-dialog";
 import { MeetingsSearchFilter } from "./meetings-search-filter";
 import { StatusFilter } from "./status-filter";
+import { AgentIdFilter } from "./agent-id-filter";
 
 export function MeetingsListHeader() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -25,6 +26,7 @@ export function MeetingsListHeader() {
         <div className="flex items-center gap-x-2 p-1">
           <MeetingsSearchFilter />
           <StatusFilter />
+          <AgentIdFilter />
         </div>
       </div>
     </>
