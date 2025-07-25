@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { NewAgentDialog } from "./new-agent-dialog";
 import { useAgentsFilters } from "../../hooks/use-agents-filters";
 import { AgentsSearchFilter } from "./agents-search-filter";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 export function AgentsListHeader() {
   const [filters, setFilters] = useAgentsFilters();
@@ -31,15 +32,18 @@ export function AgentsListHeader() {
             New Agent
           </Button>
         </div>
-        <div className="flex items-center gap-x-2 p-1">
-          <AgentsSearchFilter />
-          {isAnyFilterModified && (
-            <Button variant="outline" onClick={onClearFilter} size="sm">
-              <XCircleIcon />
-              Clear
-            </Button>
-          )}
-        </div>
+        <ScrollArea>
+          <div className="flex items-center gap-x-2 p-1">
+            <AgentsSearchFilter />
+            {isAnyFilterModified && (
+              <Button variant="outline" onClick={onClearFilter} size="sm">
+                <XCircleIcon />
+                Clear
+              </Button>
+            )}
+          </div>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
       </div>
     </>
   );
