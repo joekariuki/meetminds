@@ -16,9 +16,6 @@ export const filterSearchParams = {
   page: parseAsInteger.withDefault(DEFAULT_PAGE).withOptions({
     clearOnDefault: true,
   }),
-  agentName: parseAsString.withDefault("").withOptions({
-    clearOnDefault: true,
-  }),
   agentId: parseAsString.withDefault("").withOptions({
     clearOnDefault: true,
   }),
