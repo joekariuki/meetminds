@@ -8,10 +8,10 @@ import { Loader } from "@/components/loader";
 import { ErrorState } from "@/components/error-state";
 import { EmptyState } from "@/components/empty-state";
 import { DataTable } from "@/components/data-table";
+import { DataPagination } from "@/components/data-pagination";
 
 import { useAgentsFilters } from "../../hooks/use-agents-filters";
 import { columns } from "../components/columns";
-import { DataPagination } from "../components/data-pagination";
 
 export function AgentsView() {
   const router = useRouter();
