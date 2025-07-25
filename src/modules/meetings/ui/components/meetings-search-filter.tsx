@@ -9,7 +9,7 @@ export function MeetingsSearchFilter() {
   return (
     <div className="relative">
       <Input
-        placeholder="Filter by name, status and agent name or ID"
+        placeholder="Filter by name"
         value={filters.search}
         onChange={(e) => setFilters({ search: e.target.value })}
         className="h-9 bg-white w-[200px] pl-7"
