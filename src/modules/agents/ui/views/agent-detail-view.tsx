@@ -53,8 +53,8 @@ export function AgentDetailView({ agentId }: Props) {
   );
 
   const [DeleteConfirmation, confirmDelete] = useConfirm(
-    `Are you sure you want to delete ${data.name}?`,
-    `The following action will delete ${data.meetingCount} associated meetings`
+    `Are you sure you want to delete this agent?`,
+    `The following action will delete ${data.meetingCount} associated meetings and cannot be undone.`
   );
 
   const handleDeleteAgent = async () => {
