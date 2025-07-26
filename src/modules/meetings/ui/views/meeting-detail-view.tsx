@@ -1,27 +1,74 @@
 "use client";
 
-import { useSuspenseQuery } from "@tanstack/react-query";
+import {
+  useSuspenseQuery,
+  useMutation,
+  useQueryClient,
+} from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 import { useTRPC } from "@/trpc/client";
+import { useConfirm } from "@/hooks/use-confirm";
 
 import { ErrorState } from "@/components/error-state";
 import { Loader } from "@/components/loader";
+
+import { MeetingDetailHeader } from "../components/meeting-detail-header";
 
 interface Props {
   meetingId: string;
 }
 
 export function MeetingDetailView({ meetingId }: Props) {
+  const router = useRouter();
   const trpc = useTRPC();
+  const queryClient = useQueryClient();
+
+  const [DeleteConfirmation, confirmDelete] = useConfirm(
+    `Are you sure you want to delete this meeting?`,
+    "This action cannot be undone."
+  );
 
   const { data } = useSuspenseQuery(
     trpc.meetings.getOne.queryOptions({
       id: meetingId,
     })
   );
+
+  const deleteMeeting = useMutation(
+    trpc.meetings.delete.mutationOptions({
+      onSuccess: () => {
+        queryClient.invalidateQueries(trpc.meetings.getMany.queryOptions({}));
+        // TODO: Invalidate free tier usage
+        router.push("/meetings");
+      },
+      onError: (error) => {
+        toast.error(
+          error.message ?? "Failed to delete meeting. Please try again later."
+        );
+      },
+    })
+  );
+
+  const handleDeleteMeeting = async () => {
+    const ok = await confirmDelete();
+
+    if (!ok) return;
+
+    await deleteMeeting.mutateAsync({ id: meetingId });
+  };
+
   return (
     <>
+      <DeleteConfirmation />
       <div className="flex flex-col flex-2 p-4 md:px-8 gap-y-4">
+        <MeetingDetailHeader
+          meetingId={meetingId}
+          meetingName={data.name}
+          onEdit={() => {}}
+          onDelete={handleDeleteMeeting}
+        />
         {JSON.stringify(data, null, 2)}
       </div>
     </>
