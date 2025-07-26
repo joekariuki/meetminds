@@ -1,7 +1,11 @@
 "use client";
 
 import { useSuspenseQuery } from "@tanstack/react-query";
+
 import { useTRPC } from "@/trpc/client";
+
+import { ErrorState } from "@/components/error-state";
+import { Loader } from "@/components/loader";
 
 interface Props {
   meetingId: string;
@@ -25,9 +29,19 @@ export function MeetingDetailView({ meetingId }: Props) {
 }
 
 export function MeetingDetailError() {
-  return <div>MeetingDetailError</div>;
+  return (
+    <ErrorState
+      title="Error Loading Meeting"
+      description="Please try again later"
+    />
+  );
 }
 
 export function MeetingDetailLoading() {
-  return <div>MeetingDetailLoading</div>;
+  return (
+    <Loader
+      title="Loading Meeting"
+      description="This may take a few seconds..."
+    />
+  );
 }
