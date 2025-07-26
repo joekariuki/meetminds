@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
   useSuspenseQuery,
   useMutation,
@@ -15,6 +16,7 @@ import { ErrorState } from "@/components/error-state";
 import { Loader } from "@/components/loader";
 
 import { MeetingDetailHeader } from "../components/meeting-detail-header";
+import { UpdateMeetingDialog } from "../components/update-meeting-dialog";
 
 interface Props {
   meetingId: string;
@@ -29,6 +31,8 @@ export function MeetingDetailView({ meetingId }: Props) {
     `Are you sure you want to delete this meeting?`,
     "This action cannot be undone."
   );
+
+  const [updateMeetingDialogOpen, setUpdateMeetingDialogOpen] = useState(false);
 
   const { data } = useSuspenseQuery(
     trpc.meetings.getOne.queryOptions({
@@ -62,11 +66,16 @@ export function MeetingDetailView({ meetingId }: Props) {
   return (
     <>
       <DeleteConfirmation />
+      <UpdateMeetingDialog
+        open={updateMeetingDialogOpen}
+        onOpenChange={setUpdateMeetingDialogOpen}
+        initialValues={data}
+      />
       <div className="flex flex-col flex-2 p-4 md:px-8 gap-y-4">
         <MeetingDetailHeader
           meetingId={meetingId}
           meetingName={data.name}
-          onEdit={() => {}}
+          onEdit={() => setUpdateMeetingDialogOpen(true)}
           onDelete={handleDeleteMeeting}
         />
         {JSON.stringify(data, null, 2)}
