@@ -19,6 +19,7 @@ import { MeetingDetailHeader } from "../components/meeting-detail-header";
 import { UpdateMeetingDialog } from "../components/update-meeting-dialog";
 import { UpcomingState } from "../components/upcoming-state";
 import { ActiveState } from "../components/active-state";
+import { CancelledState } from "../components/cancelled-state";
 
 interface Props {
   meetingId: string;
@@ -86,11 +87,7 @@ export function MeetingDetailView({ meetingId }: Props) {
           onEdit={() => setUpdateMeetingDialogOpen(true)}
           onDelete={handleDeleteMeeting}
         />
-        {isCancelled && (
-          <div className="flex flex-col flex-1 p-4 md:px-8 gap-y-4">
-            <p>Meeting cancelled</p>
-          </div>
-        )}
+        {isCancelled && <CancelledState />}
         {isCompleted && (
           <div className="flex flex-col flex-1 p-4 md:px-8 gap-y-4">
             <p>Meeting completed</p>
