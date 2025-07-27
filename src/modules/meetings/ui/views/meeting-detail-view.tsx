@@ -17,6 +17,10 @@ import { Loader } from "@/components/loader";
 
 import { MeetingDetailHeader } from "../components/meeting-detail-header";
 import { UpdateMeetingDialog } from "../components/update-meeting-dialog";
+import { UpcomingState } from "../components/upcoming-state";
+import { ActiveState } from "../components/active-state";
+import { CancelledState } from "../components/cancelled-state";
+import { ProcessingState } from "../components/processing-state";
 
 interface Props {
   meetingId: string;
@@ -63,6 +67,12 @@ export function MeetingDetailView({ meetingId }: Props) {
     await deleteMeeting.mutateAsync({ id: meetingId });
   };
 
+  const isActive = data.status === "active";
+  const isUpcoming = data.status === "upcoming";
+  const isCancelled = data.status === "cancelled";
+  const isCompleted = data.status === "completed";
+  const isProcessing = data.status === "processing";
+
   return (
     <>
       <DeleteConfirmation />
@@ -78,7 +88,21 @@ export function MeetingDetailView({ meetingId }: Props) {
           onEdit={() => setUpdateMeetingDialogOpen(true)}
           onDelete={handleDeleteMeeting}
         />
-        {JSON.stringify(data, null, 2)}
+        {isCancelled && <CancelledState />}
+        {isCompleted && (
+          <div className="flex flex-col flex-1 p-4 md:px-8 gap-y-4">
+            <p>Completed</p>
+          </div>
+        )}
+        {isProcessing && <ProcessingState />}
+        {isUpcoming && (
+          <UpcomingState
+            meetingId={meetingId}
+            onCancelMeeting={() => {}}
+            isCancelling={false}
+          />
+        )}
+        {isActive && <ActiveState meetingId={meetingId} />}
       </div>
     </>
   );
