@@ -20,6 +20,7 @@ import { UpdateMeetingDialog } from "../components/update-meeting-dialog";
 import { UpcomingState } from "../components/upcoming-state";
 import { ActiveState } from "../components/active-state";
 import { CancelledState } from "../components/cancelled-state";
+import { ProcessingState } from "../components/processing-state";
 
 interface Props {
   meetingId: string;
@@ -90,14 +91,10 @@ export function MeetingDetailView({ meetingId }: Props) {
         {isCancelled && <CancelledState />}
         {isCompleted && (
           <div className="flex flex-col flex-1 p-4 md:px-8 gap-y-4">
-            <p>Meeting completed</p>
+            <p>Completed</p>
           </div>
         )}
-        {isProcessing && (
-          <div className="flex flex-col flex-1 p-4 md:px-8 gap-y-4">
-            <p>Meeting processing</p>
-          </div>
-        )}
+        {isProcessing && <ProcessingState />}
         {isUpcoming && (
           <UpcomingState
             meetingId={meetingId}
