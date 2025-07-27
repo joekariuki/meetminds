@@ -63,6 +63,12 @@ export function MeetingDetailView({ meetingId }: Props) {
     await deleteMeeting.mutateAsync({ id: meetingId });
   };
 
+  const isActive = data.status === "active";
+  const isUpcoming = data.status === "upcoming";
+  const isCancelled = data.status === "cancelled";
+  const isCompleted = data.status === "completed";
+  const isProcessing = data.status === "processing";
+
   return (
     <>
       <DeleteConfirmation />
@@ -78,7 +84,31 @@ export function MeetingDetailView({ meetingId }: Props) {
           onEdit={() => setUpdateMeetingDialogOpen(true)}
           onDelete={handleDeleteMeeting}
         />
-        {JSON.stringify(data, null, 2)}
+        {isCancelled && (
+          <div className="flex flex-col flex-1 p-4 md:px-8 gap-y-4">
+            <p>Meeting cancelled</p>
+          </div>
+        )}
+        {isCompleted && (
+          <div className="flex flex-col flex-1 p-4 md:px-8 gap-y-4">
+            <p>Meeting completed</p>
+          </div>
+        )}
+        {isProcessing && (
+          <div className="flex flex-col flex-1 p-4 md:px-8 gap-y-4">
+            <p>Meeting processing</p>
+          </div>
+        )}
+        {isUpcoming && (
+          <div className="flex flex-col flex-1 p-4 md:px-8 gap-y-4">
+            <p>Meeting upcoming</p>
+          </div>
+        )}
+        {isActive && (
+          <div className="flex flex-col flex-1 p-4 md:px-8 gap-y-4">
+            <p>Meeting active</p>
+          </div>
+        )}
       </div>
     </>
   );
