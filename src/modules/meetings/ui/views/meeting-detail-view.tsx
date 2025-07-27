@@ -18,6 +18,7 @@ import { Loader } from "@/components/loader";
 import { MeetingDetailHeader } from "../components/meeting-detail-header";
 import { UpdateMeetingDialog } from "../components/update-meeting-dialog";
 import { UpcomingState } from "../components/upcoming-state";
+import { ActiveState } from "../components/active-state";
 
 interface Props {
   meetingId: string;
@@ -107,11 +108,7 @@ export function MeetingDetailView({ meetingId }: Props) {
             isCancelling={false}
           />
         )}
-        {isActive && (
-          <div className="flex flex-col flex-1 p-4 md:px-8 gap-y-4">
-            <p>Meeting active</p>
-          </div>
-        )}
+        {isActive && <ActiveState meetingId={meetingId} />}
       </div>
     </>
   );
