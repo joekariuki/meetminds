@@ -137,7 +137,7 @@ export function Loader({
       {showBranding && (
         <div className="flex items-center gap-4">
           <Image src="/logo.svg" alt="Image" width={64} height={64} />
-          <p className="text-5xl font-semibold">MeetMinds</p>
+          <p className={cn("text-5xl font-semibold", className)}>MeetMinds</p>
         </div>
       )}
       <Loader2
