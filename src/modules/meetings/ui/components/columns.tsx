@@ -13,8 +13,9 @@ import {
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { AvatarVariant } from "@/lib/avatar";
 
-import { AvatarVariant, GeneratedAvatar } from "@/components/generated-avatar";
+import { GeneratedAvatar } from "@/components/generated-avatar";
 import { Badge } from "@/components/ui/badge";
 
 import { MeetingGetMany } from "../../types";
