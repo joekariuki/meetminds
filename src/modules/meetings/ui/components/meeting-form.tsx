@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { useState } from "react";
 
 import { useTRPC } from "@/trpc/client";
+import { AvatarVariant } from "@/lib/avatar";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -21,7 +22,7 @@ import {
 } from "@/components/ui/form";
 import { Loader } from "@/components/loader";
 import { CommandSelect } from "@/components/command-select";
-import { AvatarVariant, GeneratedAvatar } from "@/components/generated-avatar";
+import { GeneratedAvatar } from "@/components/generated-avatar";
 
 import { NewAgentDialog } from "@/modules/agents/ui/components/new-agent-dialog";
 
