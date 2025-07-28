@@ -3,7 +3,9 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { CornerDownRightIcon, VideoIcon } from "lucide-react";
 
-import { AvatarVariant, GeneratedAvatar } from "@/components/generated-avatar";
+import { AvatarVariant } from "@/lib/avatar";
+
+import { GeneratedAvatar } from "@/components/generated-avatar";
 import { Badge } from "@/components/ui/badge";
 
 import { AgentsGetMany } from "../../types";
