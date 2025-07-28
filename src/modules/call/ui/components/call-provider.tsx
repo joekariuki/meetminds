@@ -5,6 +5,8 @@ import { generateAvatarUri } from "@/lib/avatar";
 
 import { Loader } from "@/components/loader";
 
+import { CallConnect } from "./call-connect";
+
 interface Props {
   meetingId: string;
   meetingName: string;
@@ -22,9 +24,18 @@ export function CallProvider({ meetingId, meetingName }: Props) {
   }
 
   return (
-    <div>
-      {meetingId}
-      {meetingName}
-    </div>
+    <CallConnect
+      meetingId={meetingId}
+      meetingName={meetingName}
+      userId={data.user.id}
+      userName={data.user.name}
+      userImage={
+        data.user.image ??
+        generateAvatarUri({
+          seed: data.user.name,
+          variant: "initials",
+        })
+      }
+    />
   );
 }
