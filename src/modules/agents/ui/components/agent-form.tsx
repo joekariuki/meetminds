@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 
 import { useTRPC } from "@/trpc/client";
+import { AvatarVariant } from "@/lib/avatar";
 
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -27,7 +28,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Loader } from "@/components/loader";
-import { AvatarVariant } from "@/components/generated-avatar";
 
 import { AgentGetOne } from "../../types";
 import { agentsInsertSchema } from "../../schemas";
