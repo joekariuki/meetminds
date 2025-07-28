@@ -12,10 +12,12 @@ import { toast } from "sonner";
 
 import { useTRPC } from "@/trpc/client";
 import { useConfirm } from "@/hooks/use-confirm";
+import { AvatarVariant } from "@/lib/avatar";
+
 import { ErrorState } from "@/components/error-state";
 import { Loader } from "@/components/loader";
 import { Badge } from "@/components/ui/badge";
-import { AvatarVariant, GeneratedAvatar } from "@/components/generated-avatar";
+import { GeneratedAvatar } from "@/components/generated-avatar";
 
 import { AgentDetailHeader } from "../components/agent-detail-header";
 import { UpdateAgentDialog } from "../components/update-agent-dialog";
