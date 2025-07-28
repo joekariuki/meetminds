@@ -1,13 +1,3 @@
-import { createAvatar } from "@dicebear/core";
-import {
-  botttsNeutral,
-  initials,
-  glass,
-  lorelei,
-  notionists,
-  openPeeps,
-} from "@dicebear/collection";
-
 import { cn } from "@/lib/utils";
 import { AvatarVariant, createAvatarInstance } from "@/lib/avatar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
