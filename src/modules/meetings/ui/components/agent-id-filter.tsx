@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { useTRPC } from "@/trpc/client";
+import { AvatarVariant } from "@/lib/avatar";
+
 import { CommandSelect } from "@/components/command-select";
-import { GeneratedAvatar, AvatarVariant } from "@/components/generated-avatar";
+import { GeneratedAvatar } from "@/components/generated-avatar";
 
 import { useMeetingsFilters } from "../../hooks/use-meetings-filters";
 
