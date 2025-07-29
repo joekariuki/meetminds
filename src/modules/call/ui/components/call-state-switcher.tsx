@@ -5,6 +5,7 @@ import { StreamTheme, useCall } from "@stream-io/video-react-sdk";
 
 import { CallLobby } from "./call-lobby";
 import { CallActive } from "./call-active";
+import { CallEnded } from "./call-end";
 
 interface Props {
   meetingName: string;
@@ -36,7 +37,7 @@ export function CallStateSwitcher({ meetingName }: Props) {
       {show === "call" && (
         <CallActive onLeave={handleLeave} meetingName={meetingName} />
       )}
-      {show === "ended" && <p> Ended</p>}
+      {show === "ended" && <CallEnded />}
     </StreamTheme>
   );
 }
