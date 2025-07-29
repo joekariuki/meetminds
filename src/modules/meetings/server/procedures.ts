@@ -30,7 +30,6 @@ export const meetingsRouter = createTRPCRouter({
         })
         .returning();
 
-      // TODO: Create Stream Call, Upsert Stream User
       const call = streamVideo.video.call("default", createdMeeting.id);
 
       await call.create({
