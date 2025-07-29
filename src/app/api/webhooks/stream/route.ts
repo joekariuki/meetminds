@@ -1,11 +1,11 @@
-import { and, eq, not } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 
 import {
-  CallEndedEvent,
-  CallTranscriptionReadyEvent,
+  //   CallEndedEvent,
+  //   CallTranscriptionReadyEvent,
   CallSessionParticipantLeftEvent,
-  CallRecordingReadyEvent,
+  //   CallRecordingReadyEvent,
   CallSessionStartedEvent,
 } from "@stream-io/node-sdk";
 
@@ -39,7 +39,10 @@ export async function POST(req: NextRequest) {
   try {
     payload = JSON.parse(body) as Record<string, unknown>;
   } catch (error) {
-    return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Invalid payload: " + error },
+      { status: 400 }
+    );
   }
 
   const eventType = (payload as Record<string, unknown>)?.type;
@@ -90,7 +93,19 @@ export async function POST(req: NextRequest) {
       instructions: existingAgent.instructions,
     });
   } else if (eventType === "call.session_participant_left") {
-    // TODO: Add logic for when a participant leaves the call
+    const event = payload as CallSessionParticipantLeftEvent;
+
+    const meetingId = event.call_cid.split(":")[1];
+
+    if (!meetingId) {
+      return NextResponse.json(
+        { error: "Meeting ID not found" },
+        { status: 400 }
+      );
+    }
+
+    const call = streamVideo.video.call("default", meetingId);
+    await call.end();
   }
   return NextResponse.json({ message: "OK" }, { status: 200 });
 }
