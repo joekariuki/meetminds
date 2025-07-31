@@ -2,6 +2,7 @@ import { and, eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 
 import {
+  CallSessionEndedEvent,
   //   CallEndedEvent,
   //   CallTranscriptionReadyEvent,
   CallSessionParticipantLeftEvent,
@@ -109,6 +110,27 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
+
+    const call = streamVideo.video.call("default", meetingId);
+    await call.end();
+  } else if (eventType === "call.session_ended") {
+    const event = payload as CallSessionEndedEvent;
+    const meetingId = event.call.custom?.meetingId;
+
+    if (!meetingId) {
+      return NextResponse.json(
+        { error: "Meeting ID not found" },
+        { status: 400 }
+      );
+    }
+
+    await db
+      .update(meetings)
+      .set({
+        status: "processing",
+        endedAt: new Date(),
+      })
+      .where(and(eq(meetings.id, meetingId), eq(meetings.status, "active")));
 
     const call = streamVideo.video.call("default", meetingId);
     await call.end();
