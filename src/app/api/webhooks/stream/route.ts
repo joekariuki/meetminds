@@ -14,7 +14,12 @@ import { agents, meetings } from "@/db/schema";
 import { streamVideo } from "@/lib/stream-video";
 
 function verifySignatureWithSDK(signature: string, body: string) {
-  return streamVideo.verifyWebhook(signature, body);
+  try {
+    return streamVideo.verifyWebhook(body, signature);
+  } catch (error) {
+    console.error("Error verifying webhook signature:", error);
+    return false;
+  }
 }
 
 export async function POST(req: NextRequest) {
@@ -28,6 +33,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  // Get raw body as buffer to avoid any encoding issues
   const body = await req.text();
 
   if (!verifySignatureWithSDK(signature, body)) {
@@ -86,7 +92,7 @@ export async function POST(req: NextRequest) {
     const realtimeClient = await streamVideo.video.connectOpenAi({
       call,
       openAiApiKey: process.env.OPENAI_API_KEY!,
-      agentUserId: existingAgent.userId,
+      agentUserId: existingAgent.id,
     });
 
     realtimeClient.updateSession({
