@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { AvatarVariant, createAvatarInstance } from "@/lib/avatar";
+import { AvatarVariant, generateAvatarUri } from "@/lib/avatar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface GeneratedAvatarProps {
@@ -13,11 +13,11 @@ export function GeneratedAvatar({
   className,
   variant = "notionists",
 }: GeneratedAvatarProps) {
-  const avatar = createAvatarInstance({ seed, variant });
+  const avatarUrl = generateAvatarUri({ seed, variant });
 
   return (
     <Avatar className={cn(className)}>
-      <AvatarImage src={avatar.toDataUri()} alt="Avatar" />
+      <AvatarImage src={avatarUrl} alt="Avatar" />
       <AvatarFallback>{seed.charAt(0).toUpperCase()}</AvatarFallback>
     </Avatar>
   );

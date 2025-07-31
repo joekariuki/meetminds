@@ -64,7 +64,9 @@ export function createAvatarInstance({ seed, variant }: Props) {
  * Generates an avatar URI based on the variant and seed
  */
 export function generateAvatarUri({ seed, variant }: Props) {
-  const avatar = createAvatarInstance({ seed, variant });
-
-  return avatar.toDataUri();
+  // Convert camelCase variant to kebab-case for the API
+  const style = variant.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
+  return `https://api.dicebear.com/9.x/${style}/svg?seed=${encodeURIComponent(
+    seed
+  )}`;
 }
