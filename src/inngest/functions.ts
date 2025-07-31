@@ -19,6 +19,8 @@ export const meetingsProcessing = inngest.createFunction(
       return JSONL.parse<StreamTranscriptItem>(response);
     });
 
+    // TODO: Remove eslint-disable-next-line
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const transcriptWithSpeakers = await step.run("add-speakers", async () => {
       const speakerIds = [
         ...new Set(transcript.map((item) => item.speaker_id)),
