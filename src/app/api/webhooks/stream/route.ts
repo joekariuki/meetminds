@@ -6,7 +6,7 @@ import {
   //   CallEndedEvent,
   CallTranscriptionReadyEvent,
   CallSessionParticipantLeftEvent,
-  //   CallRecordingReadyEvent,
+  CallRecordingReadyEvent,
   CallSessionStartedEvent,
 } from "@stream-io/node-sdk";
 
@@ -155,6 +155,23 @@ export async function POST(req: NextRequest) {
     }
 
     // TODO: Call Ingest background job to summarize transcript
+  } else if (eventType === "call.recording_ready") {
+    const event = payload as CallRecordingReadyEvent;
+    const meetingId = event.call_cid.split(":")[1];
+
+    if (!meetingId) {
+      return NextResponse.json(
+        { error: "Meeting ID not found" },
+        { status: 400 }
+      );
+    }
+
+    await db
+      .update(meetings)
+      .set({
+        recordingUrl: event.call_recording.url,
+      })
+      .where(eq(meetings.id, meetingId));
   }
   return NextResponse.json({ message: "OK" }, { status: 200 });
 }
