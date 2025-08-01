@@ -66,6 +66,13 @@ This document outlines potential features and enhancements for the MeetMinds pla
 - User engagement tracking
 - Customizable reporting widgets
 
+### 4. In-App Feedback System
+
+- Allow users to submit feedback directly from the application
+- Send feedback as email to support@meetminds.ai
+- Include context information (user ID, page location, timestamp)
+- Support for both general feedback and bug reports
+
 ## Integration & Extensibility
 
 ### 1. Third-Party Integrations
@@ -93,6 +100,18 @@ This document outlines potential features and enhancements for the MeetMinds pla
 - Location-based responses
 - Time-sensitive recommendations
 - Device and platform awareness
+
+## Storage & Data Management
+
+### 1. External Storage for Recordings and Transcripts
+
+- Implement Amazon S3 storage for permanent retention of meeting recordings and transcripts
+- Stream only stores recordings and transcripts for two weeks before deletion
+- Free users will have default Stream storage (up to 2 weeks)
+- Paid subscribers will get permanent/long-term storage with external S3 integration
+- Follow Stream's documentation for implementation:
+  - Recording storage: [https://getstream.io/video/docs/api/recording/storage/](https://getstream.io/video/docs/api/recording/storage/)
+  - Transcript storage: [https://getstream.io/video/docs/api/transcribing/storage/](https://getstream.io/video/docs/api/transcribing/storage/)
 
 ## Security & Privacy
 
