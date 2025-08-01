@@ -59,8 +59,9 @@ export function CompletedState({ data }: Props) {
                   key={tab.value}
                   value={tab.value}
                   icon={tab.icon}
-                  children={tab.label}
-                />
+                >
+                  {tab.label}
+                </CustomTabTrigger>
               ))}
             </TabsList>
             <ScrollBar orientation="horizontal" />
