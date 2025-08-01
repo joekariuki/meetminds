@@ -94,6 +94,18 @@ This document outlines potential features and enhancements for the MeetMinds pla
 - Time-sensitive recommendations
 - Device and platform awareness
 
+## Storage & Data Management
+
+### 1. External Storage for Recordings and Transcripts
+
+- Implement Amazon S3 storage for permanent retention of meeting recordings and transcripts
+- Stream only stores recordings and transcripts for two weeks before deletion
+- Free users will have default Stream storage (up to 2 weeks)
+- Paid subscribers will get permanent/long-term storage with external S3 integration
+- Follow Stream's documentation for implementation:
+  - Recording storage: https://getstream.io/video/docs/api/recording/storage/
+  - Transcript storage: https://getstream.io/video/docs/api/transcribing/storage/
+
 ## Security & Privacy
 
 ### 1. Data Protection
