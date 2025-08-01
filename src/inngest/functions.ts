@@ -1,11 +1,13 @@
+import { eq, inArray } from "drizzle-orm";
 import JSONL from "jsonl-parse-stringify";
-import { inArray } from "drizzle-orm";
+import { TextMessage } from "@inngest/agent-kit";
 
 import { db } from "@/db";
-import { agents, user } from "@/db/schema";
+import { agents, meetings, user } from "@/db/schema";
 import { StreamTranscriptItem } from "@/lib/stream-types";
 
 import { inngest } from "./client";
+import { summarizer } from "./agents/summarizer";
 
 export const meetingsProcessing = inngest.createFunction(
   { id: "meetings/processing" },
@@ -19,8 +21,6 @@ export const meetingsProcessing = inngest.createFunction(
       return JSONL.parse<StreamTranscriptItem>(response);
     });
 
-    // TODO: Remove eslint-disable-next-line
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const transcriptWithSpeakers = await step.run("add-speakers", async () => {
       const speakerIds = [
         ...new Set(transcript.map((item) => item.speaker_id)),
@@ -72,6 +72,21 @@ export const meetingsProcessing = inngest.createFunction(
           },
         };
       });
+    });
+
+    const { output } = await summarizer.run(
+      "Summarize the following transcript: " +
+        JSON.stringify(transcriptWithSpeakers)
+    );
+
+    await step.run("save-summary", async () => {
+      await db
+        .update(meetings)
+        .set({
+          summary: (output[0] as TextMessage).content as string,
+          status: "completed",
+        })
+        .where(eq(meetings.id, event.data.meetingId));
     });
   }
 );
