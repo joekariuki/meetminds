@@ -322,9 +322,10 @@ export const meetingsRouter = createTRPCRouter({
         .then((agents) =>
           agents.map((agent) => ({
             ...agent,
-            image:
-              agent.avatarType ??
-              generateAvatarUri({ seed: agent.name, variant: "notionists" }),
+            image: generateAvatarUri({
+              seed: agent.name,
+              variant: (agent.avatarType as AvatarVariant) ?? "notionists",
+            }),
           }))
         );
 
