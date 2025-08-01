@@ -66,6 +66,13 @@ This document outlines potential features and enhancements for the MeetMinds pla
 - User engagement tracking
 - Customizable reporting widgets
 
+### 4. In-App Feedback System
+
+- Allow users to submit feedback directly from the application
+- Send feedback as email to support@meetminds.ai
+- Include context information (user ID, page location, timestamp)
+- Support for both general feedback and bug reports
+
 ## Integration & Extensibility
 
 ### 1. Third-Party Integrations
