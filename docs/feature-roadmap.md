@@ -103,8 +103,8 @@ This document outlines potential features and enhancements for the MeetMinds pla
 - Free users will have default Stream storage (up to 2 weeks)
 - Paid subscribers will get permanent/long-term storage with external S3 integration
 - Follow Stream's documentation for implementation:
-  - Recording storage: https://getstream.io/video/docs/api/recording/storage/
-  - Transcript storage: https://getstream.io/video/docs/api/transcribing/storage/
+  - Recording storage: [https://getstream.io/video/docs/api/recording/storage/](https://getstream.io/video/docs/api/recording/storage/)
+  - Transcript storage: [https://getstream.io/video/docs/api/transcribing/storage/](https://getstream.io/video/docs/api/transcribing/storage/)
 
 ## Security & Privacy
 
