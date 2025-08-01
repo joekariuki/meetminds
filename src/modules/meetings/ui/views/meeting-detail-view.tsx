@@ -21,6 +21,7 @@ import { UpcomingState } from "../components/upcoming-state";
 import { ActiveState } from "../components/active-state";
 import { CancelledState } from "../components/cancelled-state";
 import { ProcessingState } from "../components/processing-state";
+import { CompletedState } from "../components/completed-state";
 
 interface Props {
   meetingId: string;
@@ -89,11 +90,7 @@ export function MeetingDetailView({ meetingId }: Props) {
           onDelete={handleDeleteMeeting}
         />
         {isCancelled && <CancelledState />}
-        {isCompleted && (
-          <div className="flex flex-col flex-1 p-4 md:px-8 gap-y-4">
-            <p>Completed</p>
-          </div>
-        )}
+        {isCompleted && <CompletedState data={data} />}
         {isProcessing && <ProcessingState />}
         {isUpcoming && (
           <UpcomingState
