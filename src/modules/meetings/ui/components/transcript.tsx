@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-// import { format } from "date-fns";
+import { format } from "date-fns";
 import { SearchIcon } from "lucide-react";
-// import Highlighter from "react-highlight-words";
+import Highlighter from "react-highlight-words";
 import { useQuery } from "@tanstack/react-query";
 
 import { useTRPC } from "@/trpc/client";
@@ -65,8 +65,18 @@ export function Transcript({ meetingId }: Props) {
                     }
                   />
                 </Avatar>
-                <p>{item.text}</p>
+                <p className="text-sm font-medium">{item.user.name}</p>
+                <p className="text-sm text-blue-500 font-medium">
+                  {format(new Date(0, 0, 0, 0, 0, 0, item.start_ts), "mm:ss")}
+                </p>
               </div>
+              <Highlighter
+                className="text-sm text-neutral-700"
+                highlightClassName="bg-yellow-200"
+                searchWords={[searchQuery]}
+                autoEscape={true}
+                textToHighlight={item.text}
+              />
             </div>
           ))}
         </div>
