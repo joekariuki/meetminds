@@ -4,7 +4,7 @@ import { TextMessage } from "@inngest/agent-kit";
 
 import { db } from "@/db";
 import { agents, meetings, user } from "@/db/schema";
-import { StreamTranscriptItem } from "@/lib/stream-types";
+import { StreamTranscriptItem } from "@/lib/stream/types";
 
 import { inngest } from "./client";
 import { summarizer } from "./agents/summarizer";

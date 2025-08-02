@@ -26,7 +26,7 @@ import { AvatarVariant, generateAvatarUri } from "@/lib/avatar";
 
 import { meetingsInsertSchema, meetingsUpdateSchema } from "../schemas";
 import { MeetingStatus } from "../types";
-import { StreamTranscriptItem } from "@/lib/stream-types";
+import { StreamTranscriptItem } from "@/lib/stream/types";
 
 export const meetingsRouter = createTRPCRouter({
   // Create meeting
