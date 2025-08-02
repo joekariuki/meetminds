@@ -21,7 +21,7 @@ import {
   MAX_PAGE_SIZE,
   MIN_PAGE_SIZE,
 } from "@/constants";
-import { streamVideo } from "@/lib/stream-video";
+import { streamVideo } from "@/lib/stream/video";
 import { AvatarVariant, generateAvatarUri } from "@/lib/avatar";
 
 import { meetingsInsertSchema, meetingsUpdateSchema } from "../schemas";

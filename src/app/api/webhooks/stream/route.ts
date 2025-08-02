@@ -12,7 +12,7 @@ import {
 
 import { db } from "@/db";
 import { agents, meetings } from "@/db/schema";
-import { streamVideo } from "@/lib/stream-video";
+import { streamVideo } from "@/lib/stream/video";
 import { inngest } from "@/inngest/client";
 
 function verifySignatureWithSDK(signature: string, body: string) {
