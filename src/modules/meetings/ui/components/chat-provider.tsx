@@ -28,7 +28,7 @@ export function ChatProvider({ meetingId, meetingName }: Props) {
       meetingName={meetingName}
       userId={data.user.id}
       userName={data.user.name}
-      userImage={data.user.image!}
+      userImage={data.user.image ?? ""}
     />
   );
 }
