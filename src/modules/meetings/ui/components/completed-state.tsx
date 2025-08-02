@@ -10,6 +10,7 @@ import {
 import { format } from "date-fns";
 
 import { AvatarVariant } from "@/lib/avatar";
+import { formatDuration } from "@/lib/utils";
 
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList } from "@/components/ui/tabs";
@@ -18,7 +19,7 @@ import { GeneratedAvatar } from "@/components/generated-avatar";
 import { Badge } from "@/components/ui/badge";
 
 import { MeetingGetOne } from "../../types";
-import { formatDuration } from "@/lib/utils";
+import { Transcript } from "./transcript";
 
 const tabs = [
   {
@@ -155,6 +156,9 @@ export function CompletedState({ data }: Props) {
               </div>
             </div>
           </div>
+        </TabsContent>
+        <TabsContent value="transcript">
+          <Transcript meetingId={data.id} />
         </TabsContent>
       </Tabs>
     </div>
