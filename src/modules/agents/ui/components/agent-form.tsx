@@ -54,7 +54,10 @@ export function AgentForm({
           trpc.agents.getMany.queryOptions({})
         );
 
-        // TODO: Invalidate free tier usage
+        // Invalidate free tier usage
+        await queryClient.invalidateQueries(
+          trpc.premium.getFreeUsage.queryOptions()
+        );
 
         onSuccess?.();
       },
