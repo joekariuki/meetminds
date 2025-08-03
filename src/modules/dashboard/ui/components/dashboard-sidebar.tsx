@@ -22,7 +22,9 @@ import {
   SidebarMenuButton,
 } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
+
 import { DashboardUserButton } from "./dashboard-user-button";
+import { DashboardTrial } from "./dashboard-trial";
 
 const firstSection = [
   {
@@ -113,6 +115,7 @@ function DashboardSidebar() {
           </SidebarGroup>
         </SidebarContent>
         <SidebarFooter className="text-white">
+          <DashboardTrial />
           <DashboardUserButton />
         </SidebarFooter>
       </Sidebar>
