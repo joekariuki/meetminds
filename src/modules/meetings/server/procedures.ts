@@ -21,12 +21,13 @@ import {
   MAX_PAGE_SIZE,
   MIN_PAGE_SIZE,
 } from "@/constants";
-import { streamVideo } from "@/lib/stream-video";
+import { streamVideo } from "@/lib/stream/video";
 import { AvatarVariant, generateAvatarUri } from "@/lib/avatar";
+import { StreamTranscriptItem } from "@/lib/stream/types";
+import { streamChat } from "@/lib/stream/chat";
 
 import { meetingsInsertSchema, meetingsUpdateSchema } from "../schemas";
 import { MeetingStatus } from "../types";
-import { StreamTranscriptItem } from "@/lib/stream-types";
 
 export const meetingsRouter = createTRPCRouter({
   // Create meeting
@@ -360,4 +361,20 @@ export const meetingsRouter = createTRPCRouter({
 
       return transcriptWithSpeakers;
     }),
+
+  // Create Stream chat token
+  generateChatToken: protectedProcedure.mutation(async ({ ctx }) => {
+    const token = streamChat.createToken(ctx.auth.user.id);
+
+    await streamChat.upsertUser({
+      id: ctx.auth.user.id,
+      name: ctx.auth.user.name,
+      role: "admin",
+      image:
+        ctx.auth.user.image ??
+        generateAvatarUri({ seed: ctx.auth.user.name, variant: "initials" }),
+    });
+
+    return token;
+  }),
 });

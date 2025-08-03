@@ -9,7 +9,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { FaGoogle } from "react-icons/fa";
 
-import { authClient } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth/client";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

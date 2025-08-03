@@ -20,6 +20,7 @@ import { Badge } from "@/components/ui/badge";
 
 import { MeetingGetOne } from "../../types";
 import { Transcript } from "./transcript";
+import { ChatProvider } from "./chat-provider";
 
 const tabs = [
   {
@@ -159,6 +160,9 @@ export function CompletedState({ data }: Props) {
         </TabsContent>
         <TabsContent value="transcript">
           <Transcript meetingId={data.id} />
+        </TabsContent>
+        <TabsContent value="chat">
+          <ChatProvider meetingId={data.id} meetingName={data.name} />
         </TabsContent>
       </Tabs>
     </div>

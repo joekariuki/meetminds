@@ -7,7 +7,8 @@ import { SignInView } from "@/modules/auth/ui/views/sign-in-view";
 
 export const metadata: Metadata = {
   title: "Sign In | MeetMinds",
-  description: "Access your MeetMinds account for AI-powered coaching and interactive meeting sessions",
+  description:
+    "Access your MeetMinds account for AI-powered coaching and interactive meeting sessions",
 };
 
 export default async function SignIn() {

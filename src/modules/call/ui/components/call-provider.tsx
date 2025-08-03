@@ -1,6 +1,6 @@
 "use client";
 
-import { authClient } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth/client";
 import { generateAvatarUri } from "@/lib/avatar";
 
 import { Loader } from "@/components/loader";

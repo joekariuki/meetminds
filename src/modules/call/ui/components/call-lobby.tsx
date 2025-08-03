@@ -10,7 +10,7 @@ import {
   VideoPreview,
 } from "@stream-io/video-react-sdk";
 
-import { authClient } from "@/lib/auth-client";
+import { authClient } from "@/lib/auth/client";
 import { generateAvatarUri } from "@/lib/avatar";
 
 import { Button } from "@/components/ui/button";
