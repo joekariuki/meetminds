@@ -63,7 +63,12 @@ export function ChatUI({
 
   if (!client) {
     return (
-      <Loader title="Loading Chat" description="This may take a few seconds" />
+      <div className="flex items-center justify-center max-h-[400px]">
+        <Loader
+          title="Loading Chat"
+          description="This may take a few seconds"
+        />
+      </div>
     );
   }
 
@@ -72,7 +77,7 @@ export function ChatUI({
       <Chat client={client}>
         <Channel channel={channel}>
           <Window>
-            <div className="flex-1 overflow-y-auto max-h-[calc(100vh-23rem)] border-b">
+            <div className="flex-1 overflow-y-auto max-h-[calc(100vh)] border-b">
               <MessageList />
             </div>
             <MessageInput />
