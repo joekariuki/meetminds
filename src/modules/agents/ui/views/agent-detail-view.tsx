@@ -42,10 +42,15 @@ export function AgentDetailView({ agentId }: Props) {
   const deleteAgent = useMutation(
     trpc.agents.delete.mutationOptions({
       onSuccess: async () => {
+        // Invalidate agent list
         await queryClient.invalidateQueries(
           trpc.agents.getMany.queryOptions({})
         );
-        // TODO: Invalidate free tier usage
+        // Invalidate free tier usage
+        await queryClient.invalidateQueries(
+          trpc.premium.getFreeUsage.queryOptions()
+        );
+
         router.push("/agents");
       },
       onError: (error) => {
