@@ -101,6 +101,13 @@ This document outlines potential features and enhancements for the MeetMinds pla
 - Time-sensitive recommendations
 - Device and platform awareness
 
+### 3. LLM Provider Flexibility
+
+- Upgrade from direct OpenAI client usage to Vercel AI SDK
+- Enable easy switching between different model providers (OpenAI, Anthropic, etc.)
+- Simplify integration with MCP servers for tool usage
+- Create a unified interface for model interactions and tool calling
+
 ## Storage & Data Management
 
 ### 1. External Storage for Recordings and Transcripts
