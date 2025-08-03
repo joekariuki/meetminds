@@ -31,8 +31,6 @@ export function Transcript({ meetingId }: Props) {
     item.text.toString().toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  console.log(data);
-
   return (
     <div className="bg-white rounded-lg border px-4 py-5 flex flex-col gap-y-4 w-full">
       <p className="text-sm font-medium">Transcript</p>
