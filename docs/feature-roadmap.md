@@ -134,6 +134,17 @@ This document outlines potential features and enhancements for the MeetMinds pla
 - Audit logging for all interactions
 - Consent management for data usage
 
+## Payment System
+
+### 1. Swappable Payment Adapter Layer
+
+- Implement unified payment interface supporting both Polar and Stripe
+- Create shared types for subscriptions, tiers, and payment statuses
+- Develop provider-specific implementations with full webhook handling
+- Add factory pattern for runtime provider selection
+- Support for trials, subscriptions, upgrades/downgrades, and cancellations
+- Environment-based provider configuration
+
 ---
 
 *This roadmap will be updated as new ideas emerge and priorities shift during development.*
