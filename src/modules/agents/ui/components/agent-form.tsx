@@ -3,6 +3,7 @@ import z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 import { useTRPC } from "@/trpc/client";
 import { AvatarVariant } from "@/lib/avatar";
@@ -43,6 +44,7 @@ export function AgentForm({
   onCancel,
   initialValues,
 }: AgentFormProps) {
+  const router = useRouter();
   const trpc = useTRPC();
   const queryClient = useQueryClient();
 
@@ -64,7 +66,10 @@ export function AgentForm({
       onError: (error) => {
         toast.error(error.message);
 
-        // TODO: Check if error code is "FORBIDDEN", redirect to /"upgrade"
+        // Check if error code is "FORBIDDEN", redirect to /"upgrade"
+        if (error.data?.code === "FORBIDDEN") {
+          router.push("/upgrade");
+        }
       },
     })
   );
@@ -89,8 +94,6 @@ export function AgentForm({
       },
       onError: (error) => {
         toast.error(error.message);
-
-        // TODO: Check if error code is "FORBIDDEN", redirect to /"upgrade"
       },
     })
   );
