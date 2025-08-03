@@ -14,7 +14,11 @@ import JSONL from "jsonl-parse-stringify";
 
 import { db } from "@/db";
 import { agents, meetings, user } from "@/db/schema";
-import { createTRPCRouter, protectedProcedure } from "@/trpc/init";
+import {
+  createTRPCRouter,
+  premiumProcedure,
+  protectedProcedure,
+} from "@/trpc/init";
 import {
   DEFAULT_PAGE,
   DEFAULT_PAGE_SIZE,
@@ -31,7 +35,7 @@ import { MeetingStatus } from "../types";
 
 export const meetingsRouter = createTRPCRouter({
   // Create meeting
-  create: protectedProcedure
+  create: premiumProcedure("meetings")
     .input(meetingsInsertSchema)
     .mutation(async ({ input, ctx }) => {
       const [createdMeeting] = await db
