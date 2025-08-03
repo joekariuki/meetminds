@@ -66,13 +66,13 @@ export const premiumProcedure = (entity: "meetings" | "agents") =>
       .where(eq(agents.userId, ctx.auth.user.id));
 
     const isPremium = customer.activeSubscriptions.length > 0;
-    const isFreeAgentLimitReached = userAgents.count > MAX_FREE_AGENTS;
-    const isFreeMeetingLimitReached = userMeetings.count > MAX_FREE_MEETINGS;
+    const isFreeMeetingLimitReached = userMeetings.count >= MAX_FREE_MEETINGS;
+    const isFreeAgentLimitReached = userAgents.count >= MAX_FREE_AGENTS;
 
     const shouldThrowMeetingError =
-      entity === "meetings" && !isPremium && isFreeMeetingLimitReached;
+      entity === "meetings" && isFreeMeetingLimitReached && !isPremium;
     const shouldThrowAgentError =
-      entity === "agents" && !isPremium && isFreeAgentLimitReached;
+      entity === "agents" && isFreeAgentLimitReached && !isPremium;
 
     if (shouldThrowMeetingError) {
       throw new TRPCError({
