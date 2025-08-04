@@ -80,7 +80,7 @@ export function PricingCard({
       <div className="flex items-end gap-x-4 justify-between">
         <div className="flex flex-col gap-y-2">
           <div className="flex items-cnter gap-x-2">
-            <div className="font-medium text-4xl">{title}</div>
+            <div className="font-medium text-2xl">{title}</div>
             {badge ? (
               <Badge className={cn(pricingCardBadgeVariants({ variant }))}>
                 {badge}
