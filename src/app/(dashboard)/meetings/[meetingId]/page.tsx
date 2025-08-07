@@ -37,8 +37,6 @@ export default async function MeetingPage({ params }: Props) {
     })
   );
 
-  // TODO: Prefetch `meetings.getTranscript`
-
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <Suspense fallback={<MeetingDetailLoading />}>
