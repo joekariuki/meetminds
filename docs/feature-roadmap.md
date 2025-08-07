@@ -68,10 +68,15 @@ This document outlines potential features and enhancements for the MeetMinds pla
 
 ### 4. In-App Feedback System
 
-- Allow users to submit feedback directly from the application
-- Send feedback as email to support@meetminds.ai
-- Include context information (user ID, page location, timestamp)
-- Support for both general feedback and bug reports
+- Allow users to submit feedback directly from the application through a modal dialog
+- Send feedback as email to support@meetminds.ai using Resend or similar email service
+- Include context information (user ID, page location, timestamp, browser information)
+- Support for both general feedback and bug reports with categorized feedback types
+- Implement a user-friendly form with rating system and detailed text input
+- Add keyboard shortcut (e.g., Ctrl/Cmd + F) to quickly access feedback dialog
+- Similar to Neon's in-app feedback feature with a floating feedback button in the bottom right corner
+- Store feedback submissions in database for future reference and analytics
+- Implement rate limiting to prevent spam submissions
 
 ### 5. Network Status Notifications
 
@@ -79,6 +84,23 @@ This document outlines potential features and enhancements for the MeetMinds pla
 - Show visual indicator in UI when app is in offline mode
 - Automatically retry failed requests when connection is restored
 - Inform users when app functionality is limited due to network issues
+
+### 6. Marketing Landing Page
+
+- Create a public-facing landing page to showcase MeetMinds features and benefits
+- Implement conversion-focused design with clear value propositions
+- Include sections for:
+  - Hero section with compelling headline and call-to-action
+  - Key features overview with illustrations
+  - Testimonials or social proof
+  - Pricing information and plan comparison
+  - FAQ section addressing common questions
+  - Contact/support information
+- Optimize for SEO with proper meta tags and structured data
+- Ensure mobile responsiveness and fast loading times
+- Integrate with analytics to track visitor behavior and conversion rates
+- A/B testing capabilities for optimizing conversion rates
+- Multi-language support for international expansion
 
 ## Integration & Extensibility
 
