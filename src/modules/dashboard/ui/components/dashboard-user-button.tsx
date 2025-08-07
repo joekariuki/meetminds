@@ -80,7 +80,11 @@ export function DashboardUserButton() {
             <DrawerDescription>{data.user.email}</DrawerDescription>
           </DrawerHeader>
           <DrawerFooter>
-            <Button variant="outline" onClick={() => {}} className="w-full">
+            <Button
+              variant="outline"
+              onClick={() => authClient.customer.portal()}
+              className="w-full"
+            >
               <CreditCardIcon className="size-4 text-black" />
               Billing
             </Button>
@@ -124,9 +128,8 @@ export function DashboardUserButton() {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        {/* TODO: Update to point to billing page after implementation */}
         <DropdownMenuItem
-          onClick={() => {}}
+          onClick={() => authClient.customer.portal()}
           className="cursor-pointer flex items-center justify-between"
         >
           Billing
