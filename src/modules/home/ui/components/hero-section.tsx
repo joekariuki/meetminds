@@ -16,56 +16,56 @@ export function HeroSection() {
         seed="Spanish Tutor"
         label="Spanish Tutor"
         variant="openPeeps"
-        className="top-20 left-[10%] hidden lg:block"
+        className="top-20 left-[5%] sm:left-[10%]"
         delay={0}
       />
       <floatingAvatar.FloatingAvatar
         seed="Business Coach"
         label="Business Coach"
         variant="openPeeps"
-        className="top-32 right-[15%] hidden lg:block"
+        className="top-32 right-[5%] sm:right-[15%]"
         delay={0.5}
       />
       <floatingAvatar.FloatingAvatar
         seed="Wellness Coach"
         label="Wellness Coach"
         variant="openPeeps"
-        className="bottom-32 left-[15%] hidden lg:block"
+        className="bottom-32 left-[5%] sm:left-[15%]"
         delay={1}
       />
       <floatingAvatar.FloatingAvatar
         seed="Career Advisor"
         label="Career Advisor"
         variant="openPeeps"
-        className="bottom-20 right-[10%] hidden lg:block"
+        className="bottom-20 right-[5%] sm:right-[10%]"
         delay={1.5}
       />
       <floatingAvatar.FloatingAvatar
         seed="Life Coach"
         label="Life Coach"
         variant="openPeeps"
-        className="top-1/2 left-[5%] hidden xl:block"
+        className="top-1/2 left-[2%] sm:left-[5%] hidden md:block"
         delay={2}
       />
       <floatingAvatar.FloatingAvatar
         seed="French Tutor"
         label="French Tutor"
         variant="openPeeps"
-        className="top-1/3 right-[8%] hidden xl:block"
+        className="top-1/3 right-[3%] sm:right-[8%] hidden md:block"
         delay={2.5}
       />
       <floatingAvatar.FloatingAvatar
         seed="Fitness Coach"
         label="Fitness Coach"
         variant="openPeeps"
-        className="bottom-40 right-[20%] hidden xl:block"
+        className="bottom-40 right-[10%] sm:right-[20%] hidden lg:block"
         delay={3}
       />
       <floatingAvatar.FloatingAvatar
         seed="Music Tutor"
         label="Music Tutor"
         variant="openPeeps"
-        className="top-1/4 left-[12%] hidden xl:block"
+        className="top-1/4 left-[5%] sm:left-[12%] hidden lg:block"
         delay={3.5}
       />
 
