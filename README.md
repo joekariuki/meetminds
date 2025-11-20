@@ -1,4 +1,3 @@
-
 <!-- <a href="https://meetminds.app/">
 <img alt="MeetMinds" src="./public/og.jpg">
 </a> -->
@@ -106,12 +105,18 @@ INNGEST_SIGNING_KEY=your_inngest_signing_key
 npm install
 # or
 pnpm install
+# or
+bun install
 
 # Push database schema
 npm run db:push
+# or
+bun run db:push
 
 # Run the development server
 npm run dev
+# or
+bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
@@ -121,9 +126,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ```bash
 # Run Inngest dev server (for background jobs)
 npm run dev:inngest
+# or
+bun run dev:inngest
 
 # Open Drizzle Studio (database management)
 npm run db:studio
+# or
+bun run db:studio
 ```
 
 ## Security Notes
