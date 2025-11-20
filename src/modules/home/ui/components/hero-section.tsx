@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRightIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/use-mobile";
 import * as floatingAvatar from "./floating-avatar";
 
 export function HeroSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const isMobile = useIsMobile();
   const tooltipDuration = 3000; // 3 seconds per tooltip
 
   const avatars = [
@@ -70,12 +72,15 @@ export function HeroSection() {
   ];
 
   useEffect(() => {
+    // Only run animation on non-mobile screens
+    if (isMobile) return;
+
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % avatars.length);
     }, tooltipDuration);
 
     return () => clearInterval(interval);
-  }, [avatars.length]);
+  }, [avatars.length, isMobile]);
 
   return (
     <section className="relative overflow-hidden py-20 sm:py-32">
@@ -91,7 +96,7 @@ export function HeroSection() {
           variant={avatar.variant}
           className={avatar.className}
           delay={avatar.delay}
-          isActive={activeIndex === index}
+          isActive={!isMobile && activeIndex === index}
         />
       ))}
 
