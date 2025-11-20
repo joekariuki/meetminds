@@ -16,8 +16,8 @@ export default async function Home() {
     headers: await headers(),
   });
 
-  if (!session) {
-    redirect("/sign-in");
+  if (session) {
+    redirect("/meetings");
   }
 
   return <HomeView />;
