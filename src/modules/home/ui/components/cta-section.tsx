@@ -9,7 +9,7 @@ export function CTASection() {
     <section className="py-20 sm:py-32 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="max-w-3xl mx-auto text-center text-balance">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6 font-dm-sans">
             Ready to talk to your first AI agent?
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
