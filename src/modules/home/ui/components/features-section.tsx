@@ -197,12 +197,12 @@ export function FeaturesSection() {
     <section className="py-20 sm:py-32 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="max-w-3xl mx-auto text-center mb-16 text-balance">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
-            Everything you need for AI coaching
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight font-dm-sans">
+            Everything you need for live AI sessions
           </h2>
           <p className="text-lg text-muted-foreground">
-            Powerful features designed to make your AI coaching sessions productive,
-            organized, and always accessible.
+            Features that make your calls with AI agents productive, organized,
+            and easy to revisit.
           </p>
         </div>
 
@@ -228,5 +228,3 @@ export function FeaturesSection() {
     </section>
   );
 }
-
-
