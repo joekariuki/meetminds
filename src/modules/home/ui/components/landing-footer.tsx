@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { GithubIcon, LinkedinIcon } from "lucide-react";
-import { FaXTwitter } from "react-icons/fa6";
+import { SiGithub as GithubIcon } from "react-icons/si";
+import { SiLinkedin as LinkedinIcon } from "react-icons/si";
+import { SiX as XIcon } from "react-icons/si";
 
 export function LandingFooter() {
   return (
@@ -58,7 +59,7 @@ export function LandingFooter() {
               className="text-muted-foreground hover:text-foreground transition-colors"
               aria-label="X (Twitter)"
             >
-              <FaXTwitter className="size-5" />
+              <XIcon className="size-5" />
             </Link>
             <Link
               href="https://www.linkedin.com/in/joe-kariuki/"
