@@ -67,7 +67,8 @@ export function PricingSection() {
             Simple, transparent pricing
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            Choose the plan that fits your coaching needs. All plans include core features.
+            Choose the plan that fits your coaching needs. All plans include
+            core features.
           </p>
 
           {/* Billing toggle */}
@@ -142,13 +143,11 @@ export function PricingSection() {
                 variant={plan.highlighted ? "default" : "outline"}
                 asChild
               >
-                <Link href="/sign-up">
-                  {plan.cta}
-                </Link>
+                <Link href="/sign-up">{plan.cta}</Link>
               </Button>
 
               <div className="space-y-3">
-                <p className="text-sm font-medium">What's included:</p>
+                <p className="text-sm font-medium">What&apos;s included:</p>
                 <ul className="space-y-2.5">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-2">
@@ -165,10 +164,10 @@ export function PricingSection() {
         </div>
 
         <p className="text-center text-sm text-muted-foreground mt-8">
-          All plans include access to core features. Upgrade or downgrade anytime.
+          All plans include access to core features. Upgrade or downgrade
+          anytime.
         </p>
       </div>
     </section>
   );
 }
-
