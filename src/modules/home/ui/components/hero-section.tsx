@@ -1,73 +1,99 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowUpRightIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import * as floatingAvatar from "./floating-avatar";
 
 export function HeroSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const tooltipDuration = 3000; // 3 seconds per tooltip
+
+  const avatars = [
+    {
+      seed: "Spanish Tutor",
+      label: "Spanish Tutor",
+      variant: "openPeeps" as const,
+      className: "top-20 left-[5%] sm:left-[10%]",
+      delay: 0,
+    },
+    {
+      seed: "Business Coach",
+      label: "Business Coach",
+      variant: "openPeeps" as const,
+      className: "top-32 right-[5%] sm:right-[15%]",
+      delay: 0.5,
+    },
+    {
+      seed: "Wellness Coach",
+      label: "Wellness Coach",
+      variant: "openPeeps" as const,
+      className: "bottom-32 left-[5%] sm:left-[15%]",
+      delay: 1,
+    },
+    {
+      seed: "Career Advisor",
+      label: "Career Advisor",
+      variant: "openPeeps" as const,
+      className: "bottom-20 right-[5%] sm:right-[10%]",
+      delay: 1.5,
+    },
+    {
+      seed: "Life Coach",
+      label: "Life Coach",
+      variant: "openPeeps" as const,
+      className: "top-1/2 left-[2%] sm:left-[5%] hidden md:block",
+      delay: 2,
+    },
+    {
+      seed: "French Tutor",
+      label: "French Tutor",
+      variant: "openPeeps" as const,
+      className: "top-1/3 right-[3%] sm:right-[8%] hidden md:block",
+      delay: 2.5,
+    },
+    {
+      seed: "Fitness Coach",
+      label: "Fitness Coach",
+      variant: "openPeeps" as const,
+      className: "bottom-40 right-[10%] sm:right-[20%] hidden lg:block",
+      delay: 3,
+    },
+    {
+      seed: "Music Tutor",
+      label: "Music Tutor",
+      variant: "openPeeps" as const,
+      className: "top-50 left-[5%] sm:left-[14%] hidden lg:block",
+      delay: 3.5,
+    },
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % avatars.length);
+    }, tooltipDuration);
+
+    return () => clearInterval(interval);
+  }, [avatars.length]);
+
   return (
     <section className="relative overflow-hidden py-20 sm:py-32">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
 
       {/* Floating avatars */}
-      <floatingAvatar.FloatingAvatar
-        seed="Spanish Tutor"
-        label="Spanish Tutor"
-        variant="openPeeps"
-        className="top-20 left-[5%] sm:left-[10%]"
-        delay={0}
-      />
-      <floatingAvatar.FloatingAvatar
-        seed="Business Coach"
-        label="Business Coach"
-        variant="openPeeps"
-        className="top-32 right-[5%] sm:right-[15%]"
-        delay={0.5}
-      />
-      <floatingAvatar.FloatingAvatar
-        seed="Wellness Coach"
-        label="Wellness Coach"
-        variant="openPeeps"
-        className="bottom-32 left-[5%] sm:left-[15%]"
-        delay={1}
-      />
-      <floatingAvatar.FloatingAvatar
-        seed="Career Advisor"
-        label="Career Advisor"
-        variant="openPeeps"
-        className="bottom-20 right-[5%] sm:right-[10%]"
-        delay={1.5}
-      />
-      <floatingAvatar.FloatingAvatar
-        seed="Life Coach"
-        label="Life Coach"
-        variant="openPeeps"
-        className="top-1/2 left-[2%] sm:left-[5%] hidden md:block"
-        delay={2}
-      />
-      <floatingAvatar.FloatingAvatar
-        seed="French Tutor"
-        label="French Tutor"
-        variant="openPeeps"
-        className="top-1/3 right-[3%] sm:right-[8%] hidden md:block"
-        delay={2.5}
-      />
-      <floatingAvatar.FloatingAvatar
-        seed="Fitness Coach"
-        label="Fitness Coach"
-        variant="openPeeps"
-        className="bottom-40 right-[10%] sm:right-[20%] hidden lg:block"
-        delay={3}
-      />
-      <floatingAvatar.FloatingAvatar
-        seed="Music Tutor"
-        label="Music Tutor"
-        variant="openPeeps"
-        className="top-1/4 left-[5%] sm:left-[12%] hidden lg:block"
-        delay={3.5}
-      />
+      {avatars.map((avatar, index) => (
+        <floatingAvatar.FloatingAvatar
+          key={avatar.seed}
+          seed={avatar.seed}
+          label={avatar.label}
+          variant={avatar.variant}
+          className={avatar.className}
+          delay={avatar.delay}
+          isActive={activeIndex === index}
+        />
+      ))}
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
