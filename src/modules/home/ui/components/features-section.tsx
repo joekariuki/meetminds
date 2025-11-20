@@ -150,45 +150,38 @@ function SearchIcon({ className }: FeatureIconProps) {
 const features = [
   {
     icon: CustomAgentsIcon,
-    title: "Custom AI Agents",
+    title: "Custom AI agents",
     description:
-      "Create personalized AI agents with unique instructions, personalities, and expertise tailored to your specific needs.",
-    image: "/features/custom-agents.svg",
+      "Create AI agents with their own instructions, personality, and expertise.",
   },
   {
     icon: VideoCallsIcon,
-    title: "Real-Time Video Calls",
-    description:
-      "Have live, interactive conversations with your AI agents through high-quality video calls powered by Stream SDK.",
-    image: "/features/video-calls.svg",
+    title: "Live calls",
+    description: "Have real-time conversations with your agents on live calls.",
   },
   {
     icon: TranscriptsIcon,
-    title: "Automatic Transcripts",
+    title: "Automatic transcripts",
     description:
-      "Every conversation is automatically transcribed with accurate speech-to-text, making it easy to review and reference.",
-    image: "/features/transcripts.svg",
+      "Every call is recorded and transcribed automatically for easy review.",
   },
   {
     icon: SummariesIcon,
-    title: "AI-Powered Summaries",
+    title: "Meeting notes",
     description:
-      "Get intelligent summaries of your sessions with key insights, action items, and important takeaways highlighted.",
-    image: "/features/summaries.svg",
+      "Get clear AI-generated meeting notes after each call with key points and takeaways.",
   },
   {
     icon: QAChatIcon,
-    title: "Meeting Q&A Chat",
+    title: "Ask questions about calls",
     description:
-      "Ask questions about any of your past conversations and get instant answers from your meeting history.",
-    image: "/features/qa-chat.svg",
+      "Use an AI chat to ask questions about your calls and get answers grounded in your conversations.",
   },
   {
     icon: SearchIcon,
-    title: "Searchable Transcripts",
+    title: "Search transcripts",
     description:
-      "Find exactly what you're looking for across all your meetings with powerful transcript search capabilities.",
-    image: "/features/search.svg",
+      "Quickly find specific moments, topics, or phrases across all your calls.",
   },
 ];
 
