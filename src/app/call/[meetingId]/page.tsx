@@ -1,6 +1,7 @@
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
+import { Metadata } from "next";
 
 import { auth } from "@/lib/auth";
 import { getQueryClient } from "@/trpc/server";
@@ -13,6 +14,11 @@ interface Props {
     meetingId: string;
   }>;
 }
+
+export const metadata: Metadata = {
+  title: "Call | MeetMinds",
+  description: "Join a meeting with your AI agent.",
+};
 
 export default async function CallPage({ params }: Props) {
   const { meetingId } = await params;
