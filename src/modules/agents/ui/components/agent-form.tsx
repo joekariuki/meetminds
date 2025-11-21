@@ -183,8 +183,7 @@ export function AgentForm({
                 <Textarea
                   placeholder="You are a helpful assistant that can speak and answer questions about the Spanish language."
                   {...field}
-                  rows={20}
-                  className="resize-none"
+                  className="resize-none min-h-[120px] max-h-[400px] overflow-y-auto"
                 />
               </FormControl>
               <FormMessage />
