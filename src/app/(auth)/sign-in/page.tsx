@@ -17,7 +17,7 @@ export default async function SignIn() {
   });
 
   if (!!session) {
-    redirect("/");
+    redirect("/agents");
   }
 
   return <SignInView />;

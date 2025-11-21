@@ -48,7 +48,7 @@ export function SignInView() {
       {
         email: data.email,
         password: data.password,
-        callbackURL: "/",
+        callbackURL: "/agents",
       },
       {
         onSuccess: () => {
@@ -68,7 +68,7 @@ export function SignInView() {
     authClient.signIn.social(
       {
         provider,
-        callbackURL: "/",
+        callbackURL: "/agents",
       },
       {
         onSuccess: () => {

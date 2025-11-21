@@ -62,12 +62,12 @@ export function SignUpView() {
         name: data.name,
         email: data.email,
         password: data.password,
-        callbackURL: "/",
+        callbackURL: "/agents",
       },
       {
         onSuccess: () => {
           setPending(false);
-          router.push("/");
+          router.push("/agents");
         },
         onError: ({ error }) => {
           setPending(false);
@@ -83,7 +83,7 @@ export function SignUpView() {
     authClient.signIn.social(
       {
         provider,
-        callbackURL: "/",
+        callbackURL: "/agents",
       },
       {
         onSuccess: () => {

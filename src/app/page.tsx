@@ -55,7 +55,7 @@ export default async function LandingPage() {
 
   // Redirect authenticated users to dashboard
   if (session) {
-    redirect("/meetings");
+    redirect("/agents");
   }
 
   return <HomeView />;
