@@ -55,25 +55,6 @@ export function DashboardCommand({ open, setOpen }: Props) {
         placeholder="Find a meeting or agent..."
       />
       <CommandList>
-        <CommandGroup heading="Meetings">
-          <CommandEmpty>
-            <span className="text-muted-foreground text-sm">
-              No meetings found
-            </span>
-          </CommandEmpty>
-          {meetings.data?.items.map((meeting) => (
-            <CommandItem
-              onSelect={() => {
-                router.push(`/meetings/${meeting.id}`);
-                setOpen(false);
-              }}
-              key={meeting.id}
-              className="cursor-pointer"
-            >
-              {meeting.name}
-            </CommandItem>
-          ))}
-        </CommandGroup>
         <CommandGroup heading="Agents">
           <CommandEmpty>
             <span className="text-muted-foreground text-sm">
@@ -95,6 +76,25 @@ export function DashboardCommand({ open, setOpen }: Props) {
                 className="size-5"
               />
               {agent.name}
+            </CommandItem>
+          ))}
+        </CommandGroup>
+        <CommandGroup heading="Meetings">
+          <CommandEmpty>
+            <span className="text-muted-foreground text-sm">
+              No meetings found
+            </span>
+          </CommandEmpty>
+          {meetings.data?.items.map((meeting) => (
+            <CommandItem
+              onSelect={() => {
+                router.push(`/meetings/${meeting.id}`);
+                setOpen(false);
+              }}
+              key={meeting.id}
+              className="cursor-pointer"
+            >
+              {meeting.name}
             </CommandItem>
           ))}
         </CommandGroup>

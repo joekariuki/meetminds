@@ -28,14 +28,14 @@ import { DashboardTrial } from "./dashboard-trial";
 
 const firstSection = [
   {
-    icon: VideoIcon,
-    label: "Meetings",
-    href: "/meetings",
-  },
-  {
     icon: BotIcon,
     label: "Agents",
     href: "/agents",
+  },
+  {
+    icon: VideoIcon,
+    label: "Meetings",
+    href: "/meetings",
   },
 ];
 
