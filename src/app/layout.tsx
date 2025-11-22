@@ -18,6 +18,7 @@ const dm_sans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
   title: "MeetMinds",
   description:
     "AI-powered agents for interactive video coaching and on-demand meeting sessions",
