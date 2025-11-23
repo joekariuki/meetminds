@@ -18,6 +18,7 @@ interface FloatingAvatarProps {
   delay?: number;
   showByDefault?: boolean;
   isActive?: boolean;
+  noAnimation?: boolean;
 }
 
 export function FloatingAvatar({
@@ -27,20 +28,30 @@ export function FloatingAvatar({
   className,
   delay = 0,
   isActive = false,
+  showByDefault = false,
+  noAnimation = false,
 }: FloatingAvatarProps) {
   const [isHovered, setIsHovered] = useState(false);
 
-  // Show tooltip if it's active in the sequence OR if user is hovering
-  const shouldShow = isActive || isHovered;
+  // Show tooltip if it's active in the sequence, shown by default, OR if user is hovering
+  const shouldShow = isActive || showByDefault || isHovered;
 
   return (
     <Tooltip open={shouldShow} onOpenChange={setIsHovered}>
       <TooltipTrigger asChild>
         <div
-          className={cn("absolute animate-float z-10", className)}
-          style={{
-            animationDelay: `${delay}s`,
-          }}
+          className={cn(
+            "absolute z-10",
+            !noAnimation && "animate-float",
+            className
+          )}
+          style={
+            !noAnimation
+              ? {
+                  animationDelay: `${delay}s`,
+                }
+              : undefined
+          }
         >
           <div className="relative group cursor-pointer pointer-events-auto">
             <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl group-hover:bg-primary/30 transition-all" />
