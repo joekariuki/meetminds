@@ -17,11 +17,36 @@ const dm_sans = DM_Sans({
   subsets: ["latin"],
 });
 
+let title = "MeetMinds | Create Custom AI Agents for Live Calls";
+let description = "Create custom AI agents, talk to them over live video, and get automatic transcripts, summaries, and searchable insights for every session.";
+let url = "https://meetminds.app/";
+let ogimage = "https://meetminds.app/og.png";
+let siteName = "meetminds.app";
+let logo = "https://meetminds.app/logo.svg";
+
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"),
-  title: "MeetMinds",
-  description:
-    "AI-powered agents for interactive video coaching and on-demand meeting sessions",
+  metadataBase: new URL(url),
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url,
+    siteName,
+    images: [ogimage],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [ogimage],
+  },
+  icons: {
+    icon: logo,
+  },
 };
 
 export default function RootLayout({

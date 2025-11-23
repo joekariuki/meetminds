@@ -1,6 +1,8 @@
-<!-- <a href="https://www.meetminds.app/">
-<img alt="MeetMinds" src="./public/og.jpg">
-</a> -->
+<div align="center">
+  <a href="https://www.meetminds.app/">
+    <img src="./public/og.png" alt="MeetMinds" width="100%">
+  </a>
+</div>
 
 <div align="center">
     <h1>MeetMinds</h1>
