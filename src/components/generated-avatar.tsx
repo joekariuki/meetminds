@@ -17,8 +17,18 @@ export function GeneratedAvatar({
 
   return (
     <Avatar className={cn(className)}>
-      <AvatarImage src={avatarUrl} alt="Avatar" />
-      <AvatarFallback>{seed.charAt(0).toUpperCase()}</AvatarFallback>
+      <AvatarImage
+        src={avatarUrl}
+        alt="Avatar"
+        onError={(e) => {
+          // Fallback to initials if image fails to load
+          const target = e.target as HTMLImageElement;
+          target.style.display = "none";
+        }}
+      />
+      <AvatarFallback className="bg-muted text-muted-foreground">
+        {seed.charAt(0).toUpperCase()}
+      </AvatarFallback>
     </Avatar>
   );
 }
