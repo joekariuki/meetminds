@@ -114,7 +114,7 @@ export function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button size="lg" asChild className="font-semibold">
               <Link href="/sign-up" className="">
-                Start your call
+                Create your agent
                 <ArrowUpRightIcon />
               </Link>
             </Button>
