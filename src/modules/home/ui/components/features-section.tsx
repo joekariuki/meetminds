@@ -167,13 +167,13 @@ const features = [
   },
   {
     icon: SummariesIcon,
-    title: "Meeting notes",
+    title: "Generated notes",
     description:
       "Get clear AI-generated meeting notes after each call with key points and takeaways.",
   },
   {
     icon: QAChatIcon,
-    title: "Ask questions about calls",
+    title: "Call insights",
     description:
       "Use an AI chat to ask questions about your calls and get answers grounded in your conversations.",
   },
