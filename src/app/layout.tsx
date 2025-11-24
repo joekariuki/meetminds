@@ -17,13 +17,13 @@ const dm_sans = DM_Sans({
   subsets: ["latin"],
 });
 
-let title = "MeetMinds | Create Custom AI Agents for Live Calls";
-let description = "Create custom AI agents, talk to them over live video, and get automatic transcripts, summaries, and searchable insights for every session.";
-let url = "https://meetminds.app/";
-let ogimage = "https://meetminds.app/og.png";
-let siteName = "meetminds.app";
-let logo = "https://meetminds.app/logo.svg";
-
+const title = "MeetMinds | Create Custom AI Agents for Live Calls";
+const description =
+  "Create custom AI agents, talk to them over live video, and get automatic transcripts, summaries, and searchable insights for every session.";
+const url = "https://meetminds.app/";
+const ogimage = "https://meetminds.app/og.png";
+const siteName = "meetminds.app";
+const logo = "https://meetminds.app/logo.svg";
 
 export const metadata: Metadata = {
   metadataBase: new URL(url),
