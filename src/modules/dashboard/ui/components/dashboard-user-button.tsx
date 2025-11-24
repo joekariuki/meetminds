@@ -9,6 +9,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { GeneratedAvatar } from "@/components/generated-avatar";
+import { Skeleton } from "@/components/ui/skeleton";
 
 import {
   DropdownMenu,
@@ -46,7 +47,20 @@ export function DashboardUserButton() {
     });
   };
 
-  if (isPending || !data?.user) {
+  if (isPending) {
+    return (
+      <div className="rounded-lg border border-border/10 p-3 mb-2 w-full flex items-center justify-between bg-primary/10 overflow-hidden gap-x-2">
+        <Skeleton className="size-9 rounded-full bg-primary/20" />
+        <div className="flex flex-col gap-0.5 text-left overflow-hidden flex-1 min-w-0">
+          <Skeleton className="h-3 w-24 bg-primary/20" />
+          <Skeleton className="h-3 w-32 bg-primary/20" />
+        </div>
+        <Skeleton className="size-4 shrink-0 rounded bg-primary/20" />
+      </div>
+    );
+  }
+
+  if (!data?.user) {
     return null;
   }
 

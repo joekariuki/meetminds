@@ -103,18 +103,18 @@ export function HeroSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="font-dm-sans text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-balance">
-            Talk to custom AI agents on a live call
+            Create custom AI agents for live calls
           </h1>
 
           <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto text-balance">
-            Create AI coaches or tutors, have real conversations, and get
-            automatic transcripts, summaries, and searchable insights.
+            Build personalized coaches, tutors, or advisors, speak with them in
+            real-time and let AI handle the notes, transcripts, and summaries.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button size="lg" asChild className="font-semibold">
               <Link href="/sign-up" className="">
-                Start your call
+                Create your agent
                 <ArrowUpRightIcon />
               </Link>
             </Button>

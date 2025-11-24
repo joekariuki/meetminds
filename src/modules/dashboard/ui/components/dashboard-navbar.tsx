@@ -1,9 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
-import { PanelLeftCloseIcon, PanelLeftIcon, SearchIcon } from "lucide-react";
+import {
+  PanelLeftCloseIcon,
+  PanelLeftIcon,
+  SearchIcon,
+  LogOutIcon,
+} from "lucide-react";
 
+import { authClient } from "@/lib/auth/client";
 import { Button } from "@/components/ui/button";
 import { useSidebar } from "@/components/ui/sidebar";
 import { DashboardCommand } from "./dashboard-command";
@@ -11,6 +18,17 @@ import { DashboardCommand } from "./dashboard-command";
 export function DashboardNavbar() {
   const { state, toggleSidebar, isMobile } = useSidebar();
   const [commandOpen, setCommandOpen] = useState(false);
+  const router = useRouter();
+
+  const handleSignOut = () => {
+    authClient.signOut({
+      fetchOptions: {
+        onSuccess: () => {
+          router.push("/");
+        },
+      },
+    });
+  };
 
   // Function to detect if user is on macOS
   const isMacOS = () => {
@@ -71,6 +89,17 @@ export function DashboardNavbar() {
             </kbd>
           )}
         </Button>
+        <div className="ml-auto">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleSignOut}
+            className="h-9 gap-x-2"
+          >
+            <LogOutIcon className="size-4" />
+            Sign Out
+          </Button>
+        </div>
       </nav>
     </>
   );
